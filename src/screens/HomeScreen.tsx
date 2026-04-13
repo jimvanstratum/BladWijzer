@@ -4,11 +4,12 @@ import { Link } from 'react-router-dom';
 import { Plus, Search, Leaf } from 'lucide-react';
 import { db } from '@/data/db';
 import { PlantCard } from '@/components/PlantCard';
-import { AppHeader } from '@/components/AppHeader';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import type { Location } from '@/types/plant';
 import { cn } from '@/lib/utils';
+
+const WORDLOGO = `${import.meta.env.BASE_URL}wordlogo.svg`;
 
 const FILTERS: Array<{ id: 'alle' | Location; label: string }> = [
   { id: 'alle', label: 'Alles' },
@@ -39,17 +40,28 @@ export function HomeScreen() {
 
   return (
     <div className="flex flex-col gap-4 pb-24 md:pb-6">
-      <AppHeader
-        title="Mijn planten"
-        subtitle={plants?.length ? `${plants.length} planten in je collectie` : 'Voeg je eerste plant toe'}
-        action={
+      <header className="flex flex-col gap-4 border-b border-border bg-gradient-to-b from-accent/15 to-transparent px-4 py-6 md:px-6 md:py-8">
+        <div className="flex items-center justify-between gap-3">
+          <img
+            src={WORDLOGO}
+            alt="BladWijzer"
+            className="h-8 max-w-[60vw] md:h-10 dark:invert"
+          />
           <Button asChild size="sm" className="hidden md:inline-flex">
             <Link to="/add">
               <Plus size={16} /> Plant toevoegen
             </Link>
           </Button>
-        }
-      />
+        </div>
+        <div>
+          <h1 className="font-serif text-2xl font-medium text-fg md:text-3xl">Mijn planten</h1>
+          <p className="mt-0.5 text-sm text-muted-foreground">
+            {plants?.length
+              ? `${plants.length} ${plants.length === 1 ? 'plant' : 'planten'} in je collectie`
+              : 'Voeg je eerste plant toe'}
+          </p>
+        </div>
+      </header>
 
       <div className="flex flex-col gap-3 px-4 md:px-6">
         <div className="relative">

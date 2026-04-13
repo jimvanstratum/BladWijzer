@@ -56,7 +56,11 @@ export function SideNav() {
       aria-label="Hoofdnavigatie"
     >
       <div className="mb-6 px-2">
-        <span className="font-serif text-2xl font-medium text-primary">BladWijzer</span>
+        <img
+          src={`${import.meta.env.BASE_URL}wordlogo.svg`}
+          alt="BladWijzer"
+          className="h-8 w-auto dark:invert"
+        />
       </div>
       <ul className="flex flex-col gap-1">
         {items.map(({ to, label, icon: Icon, end }) => (
