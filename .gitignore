@@ -15,4 +15,5 @@ dist-ssr
 
 # Build artefacts
 *.log
+*.tsbuildinfo
 .vite
