@@ -1,0 +1,124 @@
+import { useMemo, useState } from 'react';
+import { useLiveQuery } from 'dexie-react-hooks';
+import { Link } from 'react-router-dom';
+import { Plus, Search, Leaf } from 'lucide-react';
+import { db } from '@/data/db';
+import { PlantCard } from '@/components/PlantCard';
+import { AppHeader } from '@/components/AppHeader';
+import { Button } from '@/components/ui/Button';
+import { Input } from '@/components/ui/Input';
+import type { Location } from '@/types/plant';
+import { cn } from '@/lib/utils';
+
+const FILTERS: Array<{ id: 'alle' | Location; label: string }> = [
+  { id: 'alle', label: 'Alles' },
+  { id: 'binnen', label: 'Binnen' },
+  { id: 'buiten', label: 'Buiten' },
+];
+
+export function HomeScreen() {
+  const plants = useLiveQuery(() => db.plants.orderBy('addedAt').reverse().toArray(), []);
+  const [filter, setFilter] = useState<'alle' | Location>('alle');
+  const [query, setQuery] = useState('');
+
+  const filtered = useMemo(() => {
+    if (!plants) return [];
+    const q = query.trim().toLowerCase();
+    return plants
+      .filter((p) => filter === 'alle' || p.location === filter)
+      .filter((p) =>
+        !q
+          ? true
+          : [p.name, p.commonName, p.latinName, p.room]
+              .filter(Boolean)
+              .join(' ')
+              .toLowerCase()
+              .includes(q),
+      );
+  }, [plants, filter, query]);
+
+  return (
+    <div className="flex flex-col gap-4 pb-24 md:pb-6">
+      <AppHeader
+        title="Mijn planten"
+        subtitle={plants?.length ? `${plants.length} planten in je collectie` : 'Voeg je eerste plant toe'}
+        action={
+          <Button asChild size="sm" className="hidden md:inline-flex">
+            <Link to="/add">
+              <Plus size={16} /> Plant toevoegen
+            </Link>
+          </Button>
+        }
+      />
+
+      <div className="flex flex-col gap-3 px-4 md:px-6">
+        <div className="relative">
+          <Search
+            size={16}
+            className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"
+          />
+          <Input
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Zoek in je planten…"
+            className="pl-9"
+            aria-label="Zoek in eigen planten"
+          />
+        </div>
+        <div className="flex gap-2" role="tablist">
+          {FILTERS.map(({ id, label }) => (
+            <button
+              key={id}
+              role="tab"
+              aria-selected={filter === id}
+              onClick={() => setFilter(id)}
+              className={cn(
+                'rounded-full px-3 py-1.5 text-sm font-medium transition-colors',
+                filter === id
+                  ? 'bg-primary text-primary-foreground'
+                  : 'bg-muted text-muted-foreground hover:bg-muted/70',
+              )}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="px-4 md:px-6">
+        {!plants && <p className="text-sm text-muted-foreground">Laden…</p>}
+
+        {plants && plants.length === 0 && (
+          <div className="flex flex-col items-center gap-4 rounded-lg border border-dashed border-border py-12 text-center">
+            <Leaf size={32} className="text-muted-foreground" />
+            <div>
+              <p className="font-medium text-fg">Nog geen planten</p>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Voeg je eerste plant toe om te beginnen.
+              </p>
+            </div>
+            <Button asChild>
+              <Link to="/add">
+                <Plus size={16} /> Eerste plant toevoegen
+              </Link>
+            </Button>
+          </div>
+        )}
+
+        {plants && plants.length > 0 && filtered.length === 0 && (
+          <p className="py-8 text-center text-sm text-muted-foreground">Geen planten gevonden.</p>
+        )}
+
+        {filtered.length > 0 && (
+          <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
+            {filtered.map((plant) => (
+              <li key={plant.id}>
+                <PlantCard plant={plant} />
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </div>
+  );
+}
