@@ -82,7 +82,7 @@ export function SettingsScreen() {
   };
 
   return (
-    <div className="flex flex-col gap-4 pb-20 md:pb-6">
+    <div className="flex flex-col gap-4 pb-16 md:pb-6">
       <AppHeader title="Instellingen" />
 
       {/* INSTALLATIE */}
