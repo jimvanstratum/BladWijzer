@@ -6,6 +6,7 @@ import { HomeScreen } from '@/screens/HomeScreen';
 import { PlantDetailScreen } from '@/screens/PlantDetailScreen';
 import { AddPlantScreen } from '@/screens/AddPlantScreen';
 import { CatalogScreen } from '@/screens/CatalogScreen';
+import { CatalogDetailScreen } from '@/screens/CatalogDetailScreen';
 import { PruneNowScreen } from '@/screens/PruneNowScreen';
 import { SettingsScreen } from '@/screens/SettingsScreen';
 
@@ -70,6 +71,7 @@ export default function App() {
                 <Route path="/plant/:id" element={<PlantDetailScreen />} />
                 <Route path="/add" element={<AddPlantScreen />} />
                 <Route path="/catalog" element={<CatalogScreen />} />
+                <Route path="/catalog/:id" element={<CatalogDetailScreen />} />
                 <Route path="/prune" element={<PruneNowScreen />} />
                 <Route path="/settings" element={<SettingsScreen />} />
                 <Route path="*" element={<Navigate to="/" replace />} />

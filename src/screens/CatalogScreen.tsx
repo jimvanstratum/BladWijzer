@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Search, Leaf } from 'lucide-react';
 import { AppHeader } from '@/components/AppHeader';
 import { Input } from '@/components/ui/Input';
@@ -62,29 +63,31 @@ export function CatalogScreen() {
         </div>
       </div>
 
-      <ul className="flex flex-col gap-2 overflow-hidden px-4 md:px-6">
+      <ul className="flex flex-col gap-2 px-4 pb-20 md:px-6 md:pb-4">
         {results.map((entry) => (
-          <li
-            key={entry.id}
-            className="rounded-lg border border-border bg-bg p-3 shadow-sm"
-          >
-            <div className="flex items-start gap-3">
-              <Leaf size={20} className="mt-0.5 shrink-0 text-primary" strokeWidth={1.5} />
-              <div className="flex-1 min-w-0">
-                <div className="flex items-start justify-between gap-2">
-                  <div className="min-w-0 flex-1">
-                    <p className="font-medium text-fg">{entry.commonName}</p>
-                    <p className="truncate text-xs italic text-muted-foreground">
-                      {entry.latinName}
-                    </p>
+          <li key={entry.id}>
+            <Link
+              to={`/catalog/${entry.id}`}
+              className="block rounded-lg border border-border bg-bg p-3 shadow-sm transition-shadow duration-fast hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              <div className="flex items-start gap-3">
+                <Leaf size={20} className="mt-0.5 shrink-0 text-primary" strokeWidth={1.5} />
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="min-w-0 flex-1">
+                      <p className="font-medium text-fg">{entry.commonName}</p>
+                      <p className="truncate text-xs italic text-muted-foreground">
+                        {entry.latinName}
+                      </p>
+                    </div>
+                    <Badge tone="neutral" className="shrink-0">{entry.category}</Badge>
                   </div>
-                  <Badge tone="neutral" className="shrink-0">{entry.category}</Badge>
+                  <p className="mt-1 text-xs text-muted-foreground">
+                    Snoeien: {formatPruneMonths(entry.pruneMonths)}
+                  </p>
                 </div>
-                <p className="mt-1 text-xs text-muted-foreground">
-                  Snoeien: {formatPruneMonths(entry.pruneMonths)}
-                </p>
               </div>
-            </div>
+            </Link>
           </li>
         ))}
         {results.length === 0 && (

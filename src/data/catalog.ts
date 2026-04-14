@@ -1,7 +1,9 @@
 import type { CatalogEntry } from '@/types/plant';
 import catalog from './plants-catalog.json';
 
-export const CATALOG = catalog as CatalogEntry[];
+export const CATALOG = (catalog as CatalogEntry[]).sort((a, b) =>
+  a.commonName.localeCompare(b.commonName, 'nl'),
+);
 
 const BY_ID = new Map(CATALOG.map((e) => [e.id, e]));
 
