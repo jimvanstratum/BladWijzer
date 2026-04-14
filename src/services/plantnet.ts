@@ -53,7 +53,6 @@ export async function identifyPlant(
   const url = new URL(API_BASE);
   url.searchParams.set('api-key', key);
   url.searchParams.set('include-related-images', 'true');
-  url.searchParams.set('no-reject', 'true');
   url.searchParams.set('nb-results', '5');
   url.searchParams.set('lang', 'nl');
 
@@ -69,7 +68,7 @@ export async function identifyPlant(
   });
 
   if (!res.ok) {
-    if (res.status === 401) throw new Error('Ongeldige API-key.');
+    if (res.status === 401 || res.status === 403) throw new Error('Ongeldige of verlopen API-key. Controleer je Pl@ntNet key.');
     if (res.status === 429) throw new Error('Daglimiet bereikt (500 scans/dag).');
     if (res.status === 404) throw new Error('Geen plant herkend in deze foto.');
     throw new Error(`Pl@ntNet fout (${res.status}).`);
