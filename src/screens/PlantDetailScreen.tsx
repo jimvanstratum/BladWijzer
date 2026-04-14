@@ -1,17 +1,127 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useLiveQuery } from 'dexie-react-hooks';
-import { ArrowLeft, Trash2, Scissors, ImageIcon, Pencil, Camera, Check, X } from 'lucide-react';
+import {
+  ArrowLeft, Trash2, Scissors, ImageIcon, Pencil, Camera, Check, X,
+  Sun, Droplets, Flower2, Shovel, AlertTriangle, ChevronDown, ExternalLink,
+} from 'lucide-react';
 import { db } from '@/data/db';
 import { getCatalogEntry } from '@/data/catalog';
 import { formatPruneMonths, pruneStatus } from '@/lib/prune';
-import { formatDateNL } from '@/lib/utils';
+import { formatDateNL, MONTH_NAMES_NL } from '@/lib/utils';
+import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { Input, Textarea, Label } from '@/components/ui/Input';
 import { Card, CardContent } from '@/components/ui/Card';
-import { PRUNE_TYPE_LABEL } from '@/types/plant';
+import {
+  PRUNE_TYPE_LABEL,
+  SUN_LIGHT_LABEL,
+  WATER_NEEDS_LABEL,
+  TOXICITY_LABEL,
+} from '@/types/plant';
 import { fetchPlantImages, type WikimediaImage } from '@/services/wikimedia';
+import { fetchWikiSummary, type WikiSummary } from '@/services/wikipedia';
+
+/* ── Helpers ─────────────────────────────────────── */
+
+function formatMonths(months?: number[]): string {
+  if (!months || months.length === 0) return '—';
+  const sorted = [...months].sort((a, b) => a - b);
+  return sorted.map((m) => MONTH_NAMES_NL[m - 1]).join(', ');
+}
+
+/* ── Info-sectie component ───────────────────────── */
+
+function InfoSection({
+  icon: Icon,
+  title,
+  children,
+}: {
+  icon: typeof Sun;
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="flex gap-3">
+      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-muted text-primary">
+        <Icon size={18} />
+      </div>
+      <div className="flex-1">
+        <h3 className="text-sm font-semibold text-fg">{title}</h3>
+        <div className="mt-0.5 text-sm leading-relaxed text-muted-foreground">{children}</div>
+      </div>
+    </div>
+  );
+}
+
+/* ── Uitklapbare Wikipedia-sectie ────────────────── */
+
+function WikiSection({ latinName }: { latinName: string }) {
+  const [summary, setSummary] = useState<WikiSummary | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [fetched, setFetched] = useState(false);
+
+  const handleOpen = () => {
+    if (!fetched) {
+      setLoading(true);
+      fetchWikiSummary(latinName)
+        .then(setSummary)
+        .catch(() => setSummary(null))
+        .finally(() => {
+          setLoading(false);
+          setFetched(true);
+        });
+    }
+    setOpen((v) => !v);
+  };
+
+  return (
+    <Card>
+      <CardContent className="flex flex-col gap-2">
+        <button
+          onClick={handleOpen}
+          className="flex items-center justify-between text-left"
+        >
+          <h2 className="font-serif text-xl font-medium">Meer informatie</h2>
+          <ChevronDown
+            size={20}
+            className={cn(
+              'text-muted-foreground transition-transform',
+              open && 'rotate-180',
+            )}
+          />
+        </button>
+        {open && (
+          <div className="flex flex-col gap-2 pt-1">
+            {loading && <p className="text-sm text-muted-foreground">Laden van Wikipedia…</p>}
+            {!loading && !summary && fetched && (
+              <p className="text-sm text-muted-foreground">
+                Geen Wikipedia-artikel gevonden voor <em>{latinName}</em>.
+              </p>
+            )}
+            {summary && (
+              <>
+                <p className="text-sm leading-relaxed">{summary.extract}</p>
+                <a
+                  href={summary.pageUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-sm font-medium text-primary"
+                >
+                  Lees meer op Wikipedia <ExternalLink size={14} />
+                </a>
+              </>
+            )}
+          </div>
+        )}
+      </CardContent>
+    </Card>
+  );
+}
+
+/* ── Hoofdscherm ─────────────────────────────────── */
 
 export function PlantDetailScreen() {
   const { id } = useParams<{ id: string }>();
@@ -26,10 +136,10 @@ export function PlantDetailScreen() {
   const [editName, setEditName] = useState('');
   const [editRoom, setEditRoom] = useState('');
   const [editNotes, setEditNotes] = useState('');
-  const [editPhoto, setEditPhoto] = useState<Blob | null | undefined>(undefined); // undefined = unchanged
+  const [editPhoto, setEditPhoto] = useState<Blob | null | undefined>(undefined);
   const photoInputRef = useRef<HTMLInputElement>(null);
 
-  // Own photo blob → object URL
+  // Own photo → object URL
   useEffect(() => {
     if (!plant?.photo) {
       setPhotoUrl(null);
@@ -40,18 +150,17 @@ export function PlantDetailScreen() {
     return () => URL.revokeObjectURL(url);
   }, [plant?.photo]);
 
-  // Wikimedia reference images (also used as hero fallback)
+  // Wikimedia reference images
   useEffect(() => {
     const latin = plant?.latinName;
     if (!latin) return;
     setLoadingImages(true);
-    fetchPlantImages(latin, 4)
+    fetchPlantImages(latin, 8)
       .then(setRefImages)
       .catch(() => setRefImages([]))
       .finally(() => setLoadingImages(false));
   }, [plant?.latinName]);
 
-  // Hero image: own photo first, else first Wikimedia result
   const heroSrc = photoUrl ?? refImages[0]?.thumbUrl ?? null;
 
   if (!plant) {
@@ -183,7 +292,9 @@ export function PlantDetailScreen() {
             />
           </div>
           {editPhoto && (
-            <p className="text-xs text-primary">Nieuwe foto geselecteerd. Wordt opgeslagen bij bevestigen.</p>
+            <p className="text-xs text-primary">
+              Nieuwe foto geselecteerd. Wordt opgeslagen bij bevestigen.
+            </p>
           )}
           <div className="flex gap-2">
             <Button variant="outline" className="flex-1" onClick={cancelEdit}>
@@ -201,11 +312,14 @@ export function PlantDetailScreen() {
             {plant.commonName}
             {plant.latinName && (
               <>
-                {' '}
-                · <span className="italic">{plant.latinName}</span>
+                {' · '}
+                <span className="italic">{plant.latinName}</span>
               </>
             )}
           </p>
+          {entry?.description && (
+            <p className="text-sm leading-relaxed text-muted-foreground">{entry.description}</p>
+          )}
           <div className="flex flex-wrap gap-2 pt-1">
             <Badge tone={status.tone}>{status.label}</Badge>
             <Badge tone="neutral">{plant.location === 'binnen' ? 'Binnen' : 'Buiten'}</Badge>
@@ -214,37 +328,87 @@ export function PlantDetailScreen() {
         </div>
       )}
 
-      {/* Snoei-info */}
+      {/* ── Verzorgingsinformatie (6 icoon-secties) ── */}
       {entry && !editing && (
         <section className="px-4 md:px-6">
           <Card>
-            <CardContent className="flex flex-col gap-3">
-              <div className="flex items-center justify-between">
-                <h2 className="font-serif text-xl font-medium">Snoei-info</h2>
-                <Badge tone="neutral">{PRUNE_TYPE_LABEL[entry.pruneType]}</Badge>
-              </div>
-              <p className="text-sm">
-                <span className="font-medium">Snoeiperiode:</span>{' '}
-                {formatPruneMonths(entry.pruneMonths)}
-              </p>
-              {entry.pruneNotes && (
-                <p className="text-sm leading-relaxed text-muted-foreground">{entry.pruneNotes}</p>
+            <CardContent className="flex flex-col gap-4">
+              <h2 className="font-serif text-xl font-medium">Verzorging</h2>
+
+              {/* ☀️ Standplaats */}
+              {(entry.sunLight || entry.frostHardy !== undefined) && (
+                <InfoSection icon={Sun} title="Standplaats">
+                  {entry.sunLight && <p>{SUN_LIGHT_LABEL[entry.sunLight]}</p>}
+                  {entry.frostHardy !== undefined && (
+                    <p>{entry.frostHardy ? 'Vorstbestendig' : 'Niet vorstbestendig — beschermen in winter'}</p>
+                  )}
+                </InfoSection>
               )}
-              <div className="flex items-center justify-between border-t border-border pt-3">
-                <div>
-                  <p className="text-xs text-muted-foreground">Laatst gesnoeid</p>
-                  <p className="text-sm">{formatDateNL(plant.lastPrunedAt)}</p>
+
+              {/* 💧 Water */}
+              {(entry.waterNeeds || entry.waterNotes) && (
+                <InfoSection icon={Droplets} title="Water">
+                  {entry.waterNeeds && <p>{WATER_NEEDS_LABEL[entry.waterNeeds]}</p>}
+                  {entry.waterNotes && <p>{entry.waterNotes}</p>}
+                </InfoSection>
+              )}
+
+              {/* 🌸 Bloei */}
+              {(entry.bloomMonths?.length || entry.bloomColor) && (
+                <InfoSection icon={Flower2} title="Bloei">
+                  {entry.bloomMonths && entry.bloomMonths.length > 0 && (
+                    <p>Bloeiperiode: {formatMonths(entry.bloomMonths)}</p>
+                  )}
+                  {entry.bloomColor && <p>Kleur: {entry.bloomColor}</p>}
+                </InfoSection>
+              )}
+
+              {/* ✂️ Snoei */}
+              <InfoSection icon={Scissors} title="Snoei">
+                <p>
+                  <span className="font-medium">{PRUNE_TYPE_LABEL[entry.pruneType]}</span>
+                  {entry.pruneMonths.length > 0 && (
+                    <> — {formatPruneMonths(entry.pruneMonths)}</>
+                  )}
+                </p>
+                {entry.pruneNotes && <p>{entry.pruneNotes}</p>}
+                <div className="mt-2 flex items-center justify-between border-t border-border pt-2">
+                  <div>
+                    <p className="text-xs text-muted-foreground">Laatst gesnoeid</p>
+                    <p className="text-sm text-fg">{formatDateNL(plant.lastPrunedAt)}</p>
+                  </div>
+                  <Button size="sm" onClick={markPrunedNow}>
+                    <Scissors size={14} /> Nu gesnoeid
+                  </Button>
                 </div>
-                <Button size="sm" onClick={markPrunedNow}>
-                  <Scissors size={16} /> Nu gesnoeid
-                </Button>
-              </div>
+              </InfoSection>
+
+              {/* 🌱 Grond & voeding */}
+              {(entry.soilType || entry.fertilizeNotes) && (
+                <InfoSection icon={Shovel} title="Grond & voeding">
+                  {entry.soilType && <p>Grond: {entry.soilType}</p>}
+                  {entry.fertilizeNotes && <p>{entry.fertilizeNotes}</p>}
+                </InfoSection>
+              )}
+
+              {/* ⚠️ Giftigheid */}
+              {entry.toxicity && (
+                <InfoSection icon={AlertTriangle} title="Giftigheid">
+                  <p className={cn(
+                    'font-medium',
+                    entry.toxicity === 'niet-giftig' ? 'text-primary' : 'text-destructive',
+                  )}>
+                    {TOXICITY_LABEL[entry.toxicity]}
+                  </p>
+                  {entry.toxicityNotes && <p>{entry.toxicityNotes}</p>}
+                </InfoSection>
+              )}
             </CardContent>
           </Card>
         </section>
       )}
 
-      {/* Notities */}
+      {/* Eigen notities */}
       {plant.notes && !editing && (
         <section className="px-4 md:px-6">
           <Card>
@@ -256,10 +420,17 @@ export function PlantDetailScreen() {
         </section>
       )}
 
+      {/* Wikipedia */}
+      {plant.latinName && !editing && (
+        <section className="px-4 md:px-6">
+          <WikiSection latinName={plant.latinName} />
+        </section>
+      )}
+
       {/* Referentie-foto's */}
       {plant.latinName && !editing && (
         <section className="flex flex-col gap-3 px-4 md:px-6">
-          <h2 className="font-serif text-xl font-medium">Referentie-foto's (Wikimedia)</h2>
+          <h2 className="font-serif text-xl font-medium">Foto's (Wikimedia)</h2>
           {loadingImages && <p className="text-sm text-muted-foreground">Laden…</p>}
           {!loadingImages && refImages.length === 0 && (
             <p className="text-sm text-muted-foreground">Geen afbeeldingen gevonden.</p>

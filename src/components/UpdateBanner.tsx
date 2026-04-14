@@ -9,9 +9,11 @@ export function UpdateBanner() {
     updateServiceWorker,
   } = useRegisterSW({
     onRegisteredSW(_url, reg) {
-      // Check elke 10 minuten op updates
       if (reg) {
-        setInterval(() => reg.update().catch(() => {}), 10 * 60 * 1000);
+        // Check direct bij opstarten
+        reg.update().catch(() => {});
+        // En daarna elke 5 minuten
+        setInterval(() => reg.update().catch(() => {}), 5 * 60 * 1000);
       }
     },
   });
