@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
-import { useSwipe } from '@/hooks/useSwipe';
 import { cn } from '@/lib/utils';
 
 export interface LightboxImage {
@@ -25,13 +24,22 @@ export function ImageLightbox({
 }: ImageLightboxProps) {
   const [index, setIndex] = useState(initialIndex);
   const [loaded, setLoaded] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [swipeOffset, setSwipeOffset] = useState({ x: 0, y: 0 });
+  const [isSwiping, setIsSwiping] = useState(false);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  // Swipe refs — all mutable state for touch handling in refs to avoid stale closures
+  const touchStart = useRef<{ x: number; y: number; t: number } | null>(null);
+  const dirLock = useRef<'h' | 'v' | null>(null);
+  const currentOffset = useRef({ x: 0, y: 0 });
 
   // Reset bij openen
   useEffect(() => {
     if (open) {
       setIndex(initialIndex);
       setLoaded(false);
+      setSwipeOffset({ x: 0, y: 0 });
+      setIsSwiping(false);
     }
   }, [open, initialIndex]);
 
@@ -54,19 +62,116 @@ export function ImageLightbox({
     });
   }, [total]);
 
-  const close = useCallback(() => onOpenChange(false), [onOpenChange]);
+  // Direct touch handling — no separate hook, avoids ref-timing issues with Radix portal
+  useEffect(() => {
+    if (!open) return;
 
-  // Swipe
-  const { offsetX, offsetY, isSwiping } = useSwipe(
-    containerRef,
-    {
-      onSwipeLeft: goNext,
-      onSwipeRight: goPrev,
-      onSwipeDown: close,
-    },
-    index === 0,
-    index === total - 1,
-  );
+    // We need a small delay because Radix portal mounts the content async
+    const timer = setTimeout(() => {
+      const el = contentRef.current;
+      if (!el) return;
+
+      const onTouchStart = (e: TouchEvent) => {
+        const touch = e.touches[0];
+        // Negeer swipes die starten < 20px van schermrand (iOS back-gesture)
+        if (touch.clientX < 20 || touch.clientX > window.innerWidth - 20) return;
+        touchStart.current = { x: touch.clientX, y: touch.clientY, t: Date.now() };
+        dirLock.current = null;
+        currentOffset.current = { x: 0, y: 0 };
+        setIsSwiping(true);
+      };
+
+      const onTouchMove = (e: TouchEvent) => {
+        if (!touchStart.current) return;
+        const touch = e.touches[0];
+        const dx = touch.clientX - touchStart.current.x;
+        const dy = touch.clientY - touchStart.current.y;
+
+        // Direction lock na 10px
+        if (!dirLock.current && (Math.abs(dx) > 10 || Math.abs(dy) > 10)) {
+          dirLock.current = Math.abs(dx) > Math.abs(dy) ? 'h' : 'v';
+        }
+
+        if (dirLock.current === 'h') {
+          e.preventDefault();
+          // Rubber-band aan de randen
+          let adjDx = dx;
+          // index 0 = begin, index total-1 = einde
+          const atStart = index === 0;
+          const atEnd = index === total - 1;
+          if ((atStart && dx > 0) || (atEnd && dx < 0)) {
+            adjDx = dx * 0.25;
+          }
+          currentOffset.current = { x: adjDx, y: 0 };
+          setSwipeOffset({ x: adjDx, y: 0 });
+        } else if (dirLock.current === 'v') {
+          const adjDy = Math.max(0, dy); // alleen omlaag
+          currentOffset.current = { x: 0, y: adjDy };
+          setSwipeOffset({ x: 0, y: adjDy });
+        }
+      };
+
+      const onTouchEnd = () => {
+        if (!touchStart.current) return;
+
+        const { x: ox, y: oy } = currentOffset.current;
+        const dt = Date.now() - touchStart.current.t;
+        const vx = Math.abs(ox) / dt;
+        const vy = Math.abs(oy) / dt;
+
+        const threshold = 50;
+        const velThreshold = 0.4;
+
+        if (dirLock.current === 'h') {
+          if (ox < -threshold || (ox < -20 && vx > velThreshold)) {
+            // Swipe left → next
+            setIndex((i) => {
+              if (i >= total - 1) return i;
+              setLoaded(false);
+              return i + 1;
+            });
+          } else if (ox > threshold || (ox > 20 && vx > velThreshold)) {
+            // Swipe right → prev
+            setIndex((i) => {
+              if (i <= 0) return i;
+              setLoaded(false);
+              return i - 1;
+            });
+          }
+        } else if (dirLock.current === 'v') {
+          if (oy > threshold || (oy > 20 && vy > velThreshold)) {
+            onOpenChange(false);
+          }
+        }
+
+        touchStart.current = null;
+        dirLock.current = null;
+        currentOffset.current = { x: 0, y: 0 };
+        setSwipeOffset({ x: 0, y: 0 });
+        setIsSwiping(false);
+      };
+
+      el.addEventListener('touchstart', onTouchStart, { passive: true });
+      el.addEventListener('touchmove', onTouchMove, { passive: false });
+      el.addEventListener('touchend', onTouchEnd, { passive: true });
+
+      // Store cleanup ref
+      (el as HTMLElement & { _swipeCleanup?: () => void })._swipeCleanup = () => {
+        el.removeEventListener('touchstart', onTouchStart);
+        el.removeEventListener('touchmove', onTouchMove);
+        el.removeEventListener('touchend', onTouchEnd);
+      };
+    }, 50);
+
+    return () => {
+      clearTimeout(timer);
+      const el = contentRef.current;
+      if (el) {
+        (el as HTMLElement & { _swipeCleanup?: () => void })._swipeCleanup?.();
+      }
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open, index, total, onOpenChange]);
 
   // Keyboard
   const handleKeyDown = useCallback(
@@ -88,23 +193,30 @@ export function ImageLightbox({
   const displaySrc = loaded ? current.src : (current.thumbSrc ?? current.src);
 
   // Opacity voor swipe-down-to-close
-  const bgOpacity = isSwiping && offsetY > 0
-    ? Math.max(0.3, 1 - offsetY / 300)
+  const bgOpacity = isSwiping && swipeOffset.y > 0
+    ? Math.max(0.3, 1 - swipeOffset.y / 300)
     : 1;
 
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Portal>
+        {/* Overlay: overdimensioned om altijd hele scherm + safe areas af te dekken */}
         <Dialog.Overlay
-          className="fixed left-0 top-0 z-50 w-full bg-black transition-opacity duration-200 data-[state=closed]:opacity-0"
-          style={{ height: 'var(--app-height, 100dvh)', opacity: bgOpacity }}
+          className="fixed z-50 bg-black transition-opacity duration-200 data-[state=closed]:opacity-0"
+          style={{
+            top: '-100px',
+            left: '-100px',
+            right: '-100px',
+            bottom: '-100px',
+            opacity: bgOpacity,
+          }}
         />
         <Dialog.Content
-          ref={containerRef}
+          ref={contentRef}
           onKeyDown={handleKeyDown}
           aria-label={`Afbeelding ${index + 1} van ${total}: ${current.alt}`}
           className={cn(
-            'fixed left-0 top-0 z-50 flex w-full flex-col bg-black outline-none',
+            'fixed inset-0 z-50 flex flex-col bg-black outline-none',
             'data-[state=open]:animate-in data-[state=open]:fade-in-0',
             'data-[state=closed]:animate-out data-[state=closed]:fade-out-0',
           )}
@@ -139,7 +251,7 @@ export function ImageLightbox({
               )}
               style={{
                 transform: isSwiping
-                  ? `translate(${offsetX}px, ${Math.max(0, offsetY)}px)`
+                  ? `translate(${swipeOffset.x}px, ${Math.max(0, swipeOffset.y)}px)`
                   : undefined,
               }}
               draggable={false}
