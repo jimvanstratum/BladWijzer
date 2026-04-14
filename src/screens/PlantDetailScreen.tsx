@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useLiveQuery } from 'dexie-react-hooks';
 import {
@@ -22,6 +22,7 @@ import {
 } from '@/types/plant';
 import { fetchPlantImages, type WikimediaImage } from '@/services/wikimedia';
 import { fetchWikiSummary, type WikiSummary } from '@/services/wikipedia';
+import { ImageLightbox, type LightboxImage } from '@/components/ui/ImageLightbox';
 
 /* ── Helpers ─────────────────────────────────────── */
 
@@ -131,6 +132,10 @@ export function PlantDetailScreen() {
   const [refImages, setRefImages] = useState<WikimediaImage[]>([]);
   const [loadingImages, setLoadingImages] = useState(false);
 
+  // Lightbox
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
   // Edit mode
   const [editing, setEditing] = useState(false);
   const [editName, setEditName] = useState('');
@@ -162,6 +167,18 @@ export function PlantDetailScreen() {
   }, [plant?.latinName]);
 
   const heroSrc = photoUrl ?? refImages[0]?.thumbUrl ?? null;
+
+  // Unified image list voor lightbox
+  const lightboxImages = useMemo<LightboxImage[]>(() => {
+    const imgs: LightboxImage[] = [];
+    if (photoUrl) {
+      imgs.push({ src: photoUrl, alt: `Eigen foto van ${plant?.name ?? 'plant'}` });
+    }
+    refImages.forEach((img) => {
+      imgs.push({ src: img.fullUrl, thumbSrc: img.thumbUrl, alt: img.title });
+    });
+    return imgs;
+  }, [photoUrl, refImages, plant?.name]);
 
   if (!plant) {
     return <p className="p-4 text-sm text-muted-foreground">Plant niet gevonden.</p>;
@@ -232,11 +249,18 @@ export function PlantDetailScreen() {
       <div className="relative px-4 md:px-6">
         <div className="aspect-[4/3] w-full overflow-hidden rounded-xl bg-muted">
           {heroSrc ? (
-            <img
-              src={heroSrc}
-              alt={`Foto van ${plant.name}`}
-              className="h-full w-full object-cover"
-            />
+            <button
+              type="button"
+              className="h-full w-full"
+              onClick={() => { setLightboxIndex(0); setLightboxOpen(true); }}
+              aria-label={`Foto van ${plant.name} vergroten`}
+            >
+              <img
+                src={heroSrc}
+                alt={`Foto van ${plant.name}`}
+                className="h-full w-full object-cover"
+              />
+            </button>
           ) : (
             <div className="flex h-full w-full items-center justify-center text-muted-foreground">
               <ImageIcon size={40} strokeWidth={1.5} />
@@ -437,16 +461,26 @@ export function PlantDetailScreen() {
           )}
           {refImages.length > 0 && (
             <ul className="grid grid-cols-2 gap-2">
-              {refImages.map((img) => (
-                <li key={img.title} className="aspect-square overflow-hidden rounded-md bg-muted">
-                  <img
-                    src={img.thumbUrl}
-                    alt={img.title}
-                    loading="lazy"
-                    className="h-full w-full object-cover"
-                  />
-                </li>
-              ))}
+              {refImages.map((img, i) => {
+                const lbIndex = photoUrl ? i + 1 : i;
+                return (
+                  <li key={img.title} className="aspect-square overflow-hidden rounded-md bg-muted">
+                    <button
+                      type="button"
+                      className="h-full w-full"
+                      onClick={() => { setLightboxIndex(lbIndex); setLightboxOpen(true); }}
+                      aria-label={`${img.title} vergroten`}
+                    >
+                      <img
+                        src={img.thumbUrl}
+                        alt={img.title}
+                        loading="lazy"
+                        className="h-full w-full object-cover"
+                      />
+                    </button>
+                  </li>
+                );
+              })}
             </ul>
           )}
           <p className="text-xs text-muted-foreground">
@@ -460,6 +494,14 @@ export function PlantDetailScreen() {
           Toegevoegd op {formatDateNL(plant.addedAt)}
         </p>
       )}
+
+      {/* Lightbox */}
+      <ImageLightbox
+        images={lightboxImages}
+        initialIndex={lightboxIndex}
+        open={lightboxOpen}
+        onOpenChange={setLightboxOpen}
+      />
     </div>
   );
 }
