@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
-import { Camera, Leaf, Loader2, AlertCircle, Check } from 'lucide-react';
+import { Camera, Leaf, Loader2, AlertCircle, Check, ChevronRight } from 'lucide-react';
 import { AppHeader } from '@/components/AppHeader';
 import { Button } from '@/components/ui/Button';
 import { Card, CardContent } from '@/components/ui/Card';
@@ -215,49 +215,78 @@ export function ScanScreen() {
                 <li key={latin}>
                   <Card>
                     <CardContent className="flex items-center gap-3 py-3">
-                      {thumbUrl ? (
-                        <img
-                          src={thumbUrl}
-                          alt={common ?? latin}
-                          className="h-14 w-14 shrink-0 rounded-lg object-cover"
-                        />
+                      {/* Klikbaar gedeelte: opent catalogus detail */}
+                      {catalogMatch ? (
+                        <Link
+                          to={`/catalog/${catalogMatch.id}`}
+                          className="flex flex-1 items-center gap-3 min-w-0"
+                        >
+                          {thumbUrl ? (
+                            <img
+                              src={thumbUrl}
+                              alt={common ?? latin}
+                              className="h-14 w-14 shrink-0 rounded-lg object-cover"
+                            />
+                          ) : (
+                            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg bg-muted">
+                              <Leaf size={20} className="text-muted-foreground" />
+                            </div>
+                          )}
+                          <div className="flex-1 min-w-0">
+                            <p className="font-medium text-fg">{common ?? latin}</p>
+                            <p className="truncate text-xs italic text-muted-foreground">{latin}</p>
+                            <div className="mt-1 flex items-center gap-2">
+                              <div className="h-1.5 flex-1 rounded-full bg-muted">
+                                <div
+                                  className={cn(
+                                    'h-full rounded-full',
+                                    confidence >= 50 ? 'bg-primary' : 'bg-amber-500',
+                                  )}
+                                  style={{ width: `${confidence}%` }}
+                                />
+                              </div>
+                              <span className="text-xs font-medium text-muted-foreground">{confidence}%</span>
+                            </div>
+                            <p className="mt-0.5 text-xs text-primary">Bekijk in catalogus</p>
+                          </div>
+                          <ChevronRight size={16} className="shrink-0 text-muted-foreground" />
+                        </Link>
                       ) : (
-                        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg bg-muted">
-                          <Leaf size={20} className="text-muted-foreground" />
+                        <div className="flex flex-1 items-center gap-3 min-w-0">
+                          {thumbUrl ? (
+                            <img
+                              src={thumbUrl}
+                              alt={common ?? latin}
+                              className="h-14 w-14 shrink-0 rounded-lg object-cover"
+                            />
+                          ) : (
+                            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg bg-muted">
+                              <Leaf size={20} className="text-muted-foreground" />
+                            </div>
+                          )}
+                          <div className="flex-1 min-w-0">
+                            <p className="font-medium text-fg">{common ?? latin}</p>
+                            <p className="truncate text-xs italic text-muted-foreground">{latin}</p>
+                            <div className="mt-1 flex items-center gap-2">
+                              <div className="h-1.5 flex-1 rounded-full bg-muted">
+                                <div
+                                  className={cn(
+                                    'h-full rounded-full',
+                                    confidence >= 50 ? 'bg-primary' : 'bg-amber-500',
+                                  )}
+                                  style={{ width: `${confidence}%` }}
+                                />
+                              </div>
+                              <span className="text-xs font-medium text-muted-foreground">{confidence}%</span>
+                            </div>
+                          </div>
                         </div>
                       )}
 
-                      <div className="flex-1 min-w-0">
-                        <p className="font-medium text-fg">
-                          {common ?? latin}
-                        </p>
-                        <p className="truncate text-xs italic text-muted-foreground">
-                          {latin}
-                        </p>
-                        <div className="mt-1 flex items-center gap-2">
-                          <div className="h-1.5 flex-1 rounded-full bg-muted">
-                            <div
-                              className={cn(
-                                'h-full rounded-full',
-                                confidence >= 50 ? 'bg-primary' : 'bg-amber-500',
-                              )}
-                              style={{ width: `${confidence}%` }}
-                            />
-                          </div>
-                          <span className="text-xs font-medium text-muted-foreground">
-                            {confidence}%
-                          </span>
-                        </div>
-                        {catalogMatch && (
-                          <p className="mt-0.5 text-xs text-primary">
-                            In catalogus gevonden
-                          </p>
-                        )}
-                      </div>
-
+                      {/* Directe toevoeg-knop */}
                       <Button
                         size="sm"
-                        onClick={() => addPlant(r)}
+                        onClick={(e) => { e.preventDefault(); addPlant(r); }}
                         disabled={isSaving || saving !== null}
                         className="shrink-0"
                       >
