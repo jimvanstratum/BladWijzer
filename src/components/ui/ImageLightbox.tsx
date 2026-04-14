@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -16,6 +17,11 @@ interface ImageLightboxProps {
   onOpenChange: (open: boolean) => void;
 }
 
+/**
+ * Fullscreen image lightbox met carousel-stijl swipe.
+ * Elke afbeelding is 100vw breed. Bij swipen schuift de hele strip
+ * en glijdt de volgende afbeelding in beeld — zoals de iOS foto-app.
+ */
 export function ImageLightbox({
   images,
   initialIndex = 0,
@@ -23,15 +29,16 @@ export function ImageLightbox({
   onOpenChange,
 }: ImageLightboxProps) {
   const [index, setIndex] = useState(initialIndex);
-  const [loaded, setLoaded] = useState(false);
-  const [swipeOffset, setSwipeOffset] = useState({ x: 0, y: 0 });
-  const [isSwiping, setIsSwiping] = useState(false);
+  const [dragX, setDragX] = useState(0);
+  const [dragY, setDragY] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
 
-  // Refs for touch handling — avoids stale closures & avoids re-attaching listeners
+  // Refs voor stable touch callbacks
   const touchStart = useRef<{ x: number; y: number; t: number } | null>(null);
   const dirLock = useRef<'h' | 'v' | null>(null);
-  const currentOffset = useRef({ x: 0, y: 0 });
+  const dxRef = useRef(0);
+  const dyRef = useRef(0);
   const indexRef = useRef(index);
   indexRef.current = index;
   const totalRef = useRef(images.length);
@@ -39,113 +46,96 @@ export function ImageLightbox({
   const onOpenChangeRef = useRef(onOpenChange);
   onOpenChangeRef.current = onOpenChange;
 
+  const total = images.length;
+  const current = images[index];
+
   // Reset bij openen
   useEffect(() => {
     if (open) {
       setIndex(initialIndex);
-      setLoaded(false);
-      setSwipeOffset({ x: 0, y: 0 });
-      setIsSwiping(false);
+      setDragX(0);
+      setDragY(0);
+      setIsDragging(false);
     }
   }, [open, initialIndex]);
 
-  const total = images.length;
-  const current = images[index];
-
+  // Navigate
   const goPrev = useCallback(() => {
-    setIndex((i) => {
-      if (i <= 0) return i;
-      setLoaded(false);
-      return i - 1;
-    });
+    setIndex((i) => (i > 0 ? i - 1 : i));
   }, []);
-
   const goNext = useCallback(() => {
-    setIndex((i) => {
-      if (i >= totalRef.current - 1) return i;
-      setLoaded(false);
-      return i + 1;
-    });
+    setIndex((i) => (i < totalRef.current - 1 ? i + 1 : i));
   }, []);
 
-  // Stable touch handlers — no dependencies on index/total, read from refs
+  // ─── Touch handling ───
   const onTouchStart = useCallback((e: TouchEvent) => {
-    const touch = e.touches[0];
-    if (touch.clientX < 20 || touch.clientX > window.innerWidth - 20) return;
-    touchStart.current = { x: touch.clientX, y: touch.clientY, t: Date.now() };
+    const t = e.touches[0];
+    if (t.clientX < 16 || t.clientX > window.innerWidth - 16) return;
+    touchStart.current = { x: t.clientX, y: t.clientY, t: Date.now() };
     dirLock.current = null;
-    currentOffset.current = { x: 0, y: 0 };
-    setIsSwiping(true);
+    dxRef.current = 0;
+    dyRef.current = 0;
+    setIsDragging(true);
   }, []);
 
   const onTouchMove = useCallback((e: TouchEvent) => {
     if (!touchStart.current) return;
-    const touch = e.touches[0];
-    const dx = touch.clientX - touchStart.current.x;
-    const dy = touch.clientY - touchStart.current.y;
+    const t = e.touches[0];
+    const dx = t.clientX - touchStart.current.x;
+    const dy = t.clientY - touchStart.current.y;
 
-    if (!dirLock.current && (Math.abs(dx) > 10 || Math.abs(dy) > 10)) {
+    if (!dirLock.current && (Math.abs(dx) > 8 || Math.abs(dy) > 8)) {
       dirLock.current = Math.abs(dx) > Math.abs(dy) ? 'h' : 'v';
     }
 
     if (dirLock.current === 'h') {
       e.preventDefault();
       let adjDx = dx;
-      const atStart = indexRef.current === 0;
-      const atEnd = indexRef.current === totalRef.current - 1;
-      if ((atStart && dx > 0) || (atEnd && dx < 0)) {
-        adjDx = dx * 0.25;
+      if ((indexRef.current === 0 && dx > 0) ||
+          (indexRef.current === totalRef.current - 1 && dx < 0)) {
+        adjDx = dx * 0.2;
       }
-      currentOffset.current = { x: adjDx, y: 0 };
-      setSwipeOffset({ x: adjDx, y: 0 });
+      dxRef.current = adjDx;
+      setDragX(adjDx);
     } else if (dirLock.current === 'v') {
       const adjDy = Math.max(0, dy);
-      currentOffset.current = { x: 0, y: adjDy };
-      setSwipeOffset({ x: 0, y: adjDy });
+      dyRef.current = adjDy;
+      setDragY(adjDy);
     }
   }, []);
 
   const onTouchEnd = useCallback(() => {
     if (!touchStart.current) return;
-
-    const { x: ox, y: oy } = currentOffset.current;
+    const dx = dxRef.current;
+    const dy = dyRef.current;
     const dt = Date.now() - touchStart.current.t;
-    const vx = Math.abs(ox) / dt;
-    const vy = Math.abs(oy) / dt;
-    const threshold = 50;
-    const velThreshold = 0.4;
+    const vx = Math.abs(dx) / dt;
+    const vy = Math.abs(dy) / dt;
 
     if (dirLock.current === 'h') {
-      if (ox < -threshold || (ox < -20 && vx > velThreshold)) {
-        setIndex((i) => {
-          if (i >= totalRef.current - 1) return i;
-          setLoaded(false);
-          return i + 1;
-        });
-      } else if (ox > threshold || (ox > 20 && vx > velThreshold)) {
-        setIndex((i) => {
-          if (i <= 0) return i;
-          setLoaded(false);
-          return i - 1;
-        });
+      const w = window.innerWidth;
+      if (dx < -(w * 0.25) || (dx < -30 && vx > 0.3)) {
+        setIndex(i => (i < totalRef.current - 1 ? i + 1 : i));
+      } else if (dx > (w * 0.25) || (dx > 30 && vx > 0.3)) {
+        setIndex(i => (i > 0 ? i - 1 : i));
       }
     } else if (dirLock.current === 'v') {
-      if (oy > threshold || (oy > 20 && vy > velThreshold)) {
+      if (dy > 100 || (dy > 30 && vy > 0.3)) {
         onOpenChangeRef.current(false);
       }
     }
 
     touchStart.current = null;
     dirLock.current = null;
-    currentOffset.current = { x: 0, y: 0 };
-    setSwipeOffset({ x: 0, y: 0 });
-    setIsSwiping(false);
+    dxRef.current = 0;
+    dyRef.current = 0;
+    setDragX(0);
+    setDragY(0);
+    setIsDragging(false);
   }, []);
 
-  // Attach touch listeners once when dialog opens — stable callbacks, no re-attach
   useEffect(() => {
     if (!open) return;
-
     let el: HTMLElement | null = null;
     const timer = setTimeout(() => {
       el = contentRef.current;
@@ -153,8 +143,7 @@ export function ImageLightbox({
       el.addEventListener('touchstart', onTouchStart, { passive: true });
       el.addEventListener('touchmove', onTouchMove, { passive: false });
       el.addEventListener('touchend', onTouchEnd, { passive: true });
-    }, 50);
-
+    }, 30);
     return () => {
       clearTimeout(timer);
       if (el) {
@@ -168,43 +157,44 @@ export function ImageLightbox({
   // Keyboard
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent) => {
-      if (e.key === 'ArrowLeft') {
-        e.preventDefault();
-        goPrev();
-      } else if (e.key === 'ArrowRight') {
-        e.preventDefault();
-        goNext();
-      }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); goPrev(); }
+      else if (e.key === 'ArrowRight') { e.preventDefault(); goNext(); }
     },
     [goPrev, goNext],
   );
 
+  // Track viewport width for carousel calculations
+  const [vw, setVw] = useState(() => typeof window !== 'undefined' ? window.innerWidth : 375);
+  useEffect(() => {
+    const onResize = () => setVw(window.innerWidth);
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+
   if (!current) return null;
 
-  const displaySrc = loaded ? current.src : (current.thumbSrc ?? current.src);
+  // Carousel translate: base position + drag offset in pixels
+  const baseOffset = -index * vw;
+  const translateX = baseOffset + (isDragging ? dragX : 0);
 
-  const bgOpacity = isSwiping && swipeOffset.y > 0
-    ? Math.max(0.3, 1 - swipeOffset.y / 300)
+  // Swipe-down overlay dimming
+  const bgOpacity = isDragging && dragY > 0
+    ? Math.max(0.2, 1 - dragY / 300)
     : 1;
 
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Portal>
-        {/* Overlay: blurred achtergrond */}
+        {/* Overlay */}
         <Dialog.Overlay
-          className="fixed z-50 bg-black/70 backdrop-blur-xl transition-opacity duration-200 data-[state=closed]:opacity-0"
-          style={{
-            top: '-100px',
-            left: '-100px',
-            right: '-100px',
-            bottom: '-100px',
-            opacity: bgOpacity,
-          }}
+          className="fixed z-50 bg-black/80 backdrop-blur-2xl transition-opacity duration-200 data-[state=closed]:opacity-0"
+          style={{ inset: '-200px', opacity: bgOpacity }}
         />
+
         <Dialog.Content
           ref={contentRef}
           onKeyDown={handleKeyDown}
-          aria-label={`Afbeelding ${index + 1} van ${total}: ${current.alt}`}
+          aria-describedby={undefined}
           className={cn(
             'fixed inset-0 z-50 flex flex-col outline-none',
             'data-[state=open]:animate-in data-[state=open]:fade-in-0',
@@ -212,17 +202,23 @@ export function ImageLightbox({
           )}
           style={{ height: 'var(--app-height, 100dvh)' }}
         >
+          <VisuallyHidden>
+            <Dialog.Title>Afbeelding {index + 1} van {total}</Dialog.Title>
+          </VisuallyHidden>
           {/* Header */}
           <div
-            className="flex shrink-0 items-center justify-between px-4 py-3"
+            className="relative z-10 flex shrink-0 items-center justify-between px-4 py-3"
             style={{ paddingTop: 'calc(env(safe-area-inset-top, 0px) + 12px)' }}
           >
-            <span aria-live="polite" className="rounded-full bg-black/50 px-3 py-1 text-sm font-medium text-white backdrop-blur-sm">
+            <span
+              aria-live="polite"
+              className="rounded-full bg-black/50 px-3 py-1 text-sm font-medium text-white backdrop-blur-sm"
+            >
               {index + 1} / {total}
             </span>
             <Dialog.Close asChild>
               <button
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-sm transition-colors hover:bg-black/70"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-sm transition-colors active:bg-black/70"
                 aria-label="Sluiten"
               >
                 <X size={20} />
@@ -230,58 +226,65 @@ export function ImageLightbox({
             </Dialog.Close>
           </div>
 
-          {/* Image area */}
-          <div className="relative flex min-h-0 flex-1 items-center justify-center overflow-hidden px-2">
-            <img
-              src={displaySrc}
-              alt={current.alt}
-              onLoad={() => {
-                if (displaySrc === current.src) setLoaded(true);
-              }}
+          {/* Carousel */}
+          <div className="relative min-h-0 flex-1 overflow-hidden">
+            {/* Image strip — elke slide is exact viewport-breed */}
+            <div
               className={cn(
-                'max-h-full max-w-full rounded-lg object-contain select-none shadow-2xl',
-                !isSwiping && 'transition-transform duration-200 ease-out',
+                'flex h-full',
+                !isDragging && 'transition-transform duration-300 ease-out',
               )}
               style={{
-                transform: isSwiping
-                  ? `translate(${swipeOffset.x}px, ${Math.max(0, swipeOffset.y)}px)`
-                  : undefined,
+                transform: `translateX(${translateX}px) translateY(${isDragging ? Math.max(0, dragY) : 0}px)`,
               }}
-              draggable={false}
-            />
+            >
+              {images.map((img, i) => {
+                // Laad alleen huidige + directe buren
+                const shouldLoad = Math.abs(i - index) <= 1;
+                const imgSrc = shouldLoad ? img.src : undefined;
 
-            {/* Preload full-res image */}
-            {current.thumbSrc && current.thumbSrc !== current.src && !loaded && (
-              <img
-                src={current.src}
-                alt=""
-                className="hidden"
-                onLoad={() => setLoaded(true)}
-              />
-            )}
+                return (
+                  <div
+                    key={`${img.src}-${i}`}
+                    className="flex h-full shrink-0 items-center justify-center px-3"
+                    style={{ width: `${vw}px` }}
+                  >
+                    {imgSrc && (
+                      <img
+                        src={imgSrc}
+                        alt={img.alt}
+                        className="max-h-full max-w-full rounded-lg object-contain select-none shadow-2xl"
+                        draggable={false}
+                      />
+                    )}
+                  </div>
+                );
+              })}
+            </div>
 
-            {/* Desktop: navigatiepijlen */}
+            {/* Pijl links — altijd zichtbaar op mobiel */}
             {index > 0 && (
               <button
                 onClick={goPrev}
-                className="absolute left-2 top-1/2 hidden -translate-y-1/2 rounded-full bg-black/50 p-2 text-white backdrop-blur-sm transition-colors hover:bg-black/70 md:flex"
+                className="absolute left-1.5 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-black/40 text-white/90 backdrop-blur-sm transition-colors active:bg-black/60 md:left-3 md:h-11 md:w-11"
                 aria-label="Vorige afbeelding"
               >
-                <ChevronLeft size={24} />
+                <ChevronLeft size={22} />
               </button>
             )}
+            {/* Pijl rechts — altijd zichtbaar op mobiel */}
             {index < total - 1 && (
               <button
                 onClick={goNext}
-                className="absolute right-2 top-1/2 hidden -translate-y-1/2 rounded-full bg-black/50 p-2 text-white backdrop-blur-sm transition-colors hover:bg-black/70 md:flex"
+                className="absolute right-1.5 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-black/40 text-white/90 backdrop-blur-sm transition-colors active:bg-black/60 md:right-3 md:h-11 md:w-11"
                 aria-label="Volgende afbeelding"
               >
-                <ChevronRight size={24} />
+                <ChevronRight size={22} />
               </button>
             )}
           </div>
 
-          {/* Bottom spacer voor safe area */}
+          {/* Bottom spacer */}
           <div className="shrink-0" style={{ height: 'env(safe-area-inset-bottom, 0px)' }} />
         </Dialog.Content>
       </Dialog.Portal>
