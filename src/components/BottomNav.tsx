@@ -15,9 +15,9 @@ export function BottomNav() {
     <nav
       className={cn(
         'shrink-0 border-t border-border bg-bg',
-        'pb-[env(safe-area-inset-bottom,0px)]',
         'md:hidden',
       )}
+      style={{ paddingBottom: 'var(--sab, 0px)' }}
       aria-label="Hoofdnavigatie"
     >
       <ul className="mx-auto flex max-w-xl items-stretch justify-between px-2">
