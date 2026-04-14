@@ -18,7 +18,7 @@ export function PruneNowScreen() {
   });
 
   return (
-    <div className="flex flex-col gap-4 pb-4">
+    <div className="flex flex-col gap-4 pb-28 md:pb-6">
       <AppHeader
         title="Snoeien deze maand"
         subtitle={`Planten die in ${MONTH_NAMES_NL[month - 1]} gesnoeid mogen worden`}

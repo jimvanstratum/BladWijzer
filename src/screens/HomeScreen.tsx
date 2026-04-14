@@ -39,7 +39,7 @@ export function HomeScreen() {
   }, [plants, filter, query]);
 
   return (
-    <div className="flex flex-col gap-4 pb-4">
+    <div className="flex flex-col gap-4 pb-28 md:pb-6">
       <header className="flex items-start justify-between gap-3 border-b border-border px-4 py-5 md:px-6 md:py-6">
         <div>
           <h1 className="font-serif text-2xl font-medium text-fg md:text-3xl">Mijn planten</h1>

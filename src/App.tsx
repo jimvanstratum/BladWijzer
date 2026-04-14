@@ -21,7 +21,7 @@ export default function App() {
     <>
       <div className="flex min-h-full">
         <SideNav />
-        <main className="flex-1 pt-[env(safe-area-inset-top)] pb-[calc(5rem+env(safe-area-inset-bottom))] md:pb-6">
+        <main className="flex-1 overflow-x-hidden pt-[env(safe-area-inset-top)] md:pb-6">
           <div className="mx-auto max-w-3xl">
             <Routes>
               <Route path="/" element={<HomeScreen />} />

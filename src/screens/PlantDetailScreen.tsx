@@ -99,7 +99,7 @@ export function PlantDetailScreen() {
   };
 
   return (
-    <div className="flex flex-col gap-4 pb-4">
+    <div className="flex flex-col gap-4 pb-28 md:pb-6">
       {/* Top bar */}
       <div className="flex items-center justify-between px-4 py-3 md:px-6">
         <Button asChild variant="ghost" size="sm">
