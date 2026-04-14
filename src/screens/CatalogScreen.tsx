@@ -26,7 +26,7 @@ export function CatalogScreen() {
   }, [query, category]);
 
   return (
-    <div className="flex flex-col gap-4 pb-28 md:pb-6">
+    <div className="flex flex-col gap-4 pb-20 md:pb-6">
       <AppHeader title="Catalogus" subtitle={`${CATALOG.length} soorten met snoei-informatie`} />
 
       <div className="flex flex-col gap-3 px-4 md:px-6">
