@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { Home, Scissors, Plus, BookOpen, Settings } from 'lucide-react';
+import { Home, Scissors, ScanLine, BookOpen, Settings } from 'lucide-react';
 import { useIsDark } from '@/hooks/useIsDark';
 import { cn } from '@/lib/utils';
 
@@ -9,7 +9,7 @@ const WORDLOGO_DARK = `${import.meta.env.BASE_URL}wordlogo-dark.svg`;
 const items = [
   { to: '/', label: 'Planten', icon: Home, end: true },
   { to: '/prune', label: 'Snoeien', icon: Scissors, end: false },
-  { to: '/add', label: 'Toevoegen', icon: Plus, end: false, primary: true },
+  { to: '/scan', label: 'Scannen', icon: ScanLine, end: false, primary: true },
   { to: '/catalog', label: 'Catalogus', icon: BookOpen, end: false },
   { to: '/settings', label: 'Instellingen', icon: Settings, end: false },
 ];

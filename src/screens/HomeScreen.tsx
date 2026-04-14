@@ -44,18 +44,22 @@ export function HomeScreen() {
   return (
     <div className="flex flex-col gap-4 pb-4">
       <header className="flex items-start justify-between gap-3 border-b border-border px-4 py-5 md:px-6 md:py-6">
-        <div>
-          <h1 className="font-serif text-2xl font-medium text-fg md:text-3xl">Mijn planten</h1>
+        <div className="flex-1">
+          <div className="flex items-center gap-2">
+            <h1 className="font-serif text-2xl font-medium text-fg md:text-3xl">Mijn planten</h1>
+            <Link
+              to="/add"
+              className="flex h-7 w-7 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:bg-muted hover:text-fg"
+              aria-label="Plant toevoegen"
+            >
+              <Plus size={14} />
+            </Link>
+          </div>
           <p className="mt-0.5 text-sm text-muted-foreground">
             {plants?.length
               ? `${plants.length} ${plants.length === 1 ? 'plant' : 'planten'} in je collectie`
               : 'Voeg je eerste plant toe'}
           </p>
-          <Button asChild size="sm" className="mt-3 hidden md:inline-flex">
-            <Link to="/add">
-              <Plus size={16} /> Plant toevoegen
-            </Link>
-          </Button>
         </div>
         <img
           src={isDark ? WORDLOGO_DARK : WORDLOGO}
