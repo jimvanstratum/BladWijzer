@@ -26,9 +26,9 @@ export function PlantCard({ plant }: Props) {
     return () => URL.revokeObjectURL(url);
   }, [plant.photo]);
 
-  // Fallback: fetch first Wikimedia image if no own photo
+  // Fallback: fetch first Wikimedia image if no own photo and no heroImageUrl
   useEffect(() => {
-    if (plant.photo || !plant.latinName) return;
+    if (plant.photo || plant.heroImageUrl || !plant.latinName) return;
     let cancelled = false;
     fetchPlantImages(plant.latinName, 1)
       .then((imgs) => {
@@ -36,11 +36,11 @@ export function PlantCard({ plant }: Props) {
       })
       .catch(() => {});
     return () => { cancelled = true; };
-  }, [plant.photo, plant.latinName]);
+  }, [plant.photo, plant.heroImageUrl, plant.latinName]);
 
   const entry = getCatalogEntry(plant.catalogId);
   const status = pruneStatus(entry);
-  const imgSrc = photoUrl ?? wikiThumb;
+  const imgSrc = photoUrl ?? plant.heroImageUrl ?? wikiThumb;
 
   return (
     <Link

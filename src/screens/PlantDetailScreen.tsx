@@ -166,7 +166,7 @@ export function PlantDetailScreen() {
       .finally(() => setLoadingImages(false));
   }, [plant?.latinName]);
 
-  const heroSrc = photoUrl ?? refImages[0]?.thumbUrl ?? null;
+  const heroSrc = photoUrl ?? plant?.heroImageUrl ?? refImages[0]?.thumbUrl ?? null;
 
   // Unified image list voor lightbox
   const lightboxImages = useMemo<LightboxImage[]>(() => {
@@ -410,7 +410,7 @@ export function PlantDetailScreen() {
               {/* 🌱 Grond & voeding */}
               {(entry.soilType || entry.fertilizeNotes) && (
                 <InfoSection icon={Shovel} title="Grond & voeding">
-                  {entry.soilType && <p>Grond: {entry.soilType}</p>}
+                  {entry.soilType && <p>{entry.soilType}</p>}
                   {entry.fertilizeNotes && <p>{entry.fertilizeNotes}</p>}
                 </InfoSection>
               )}
@@ -418,13 +418,16 @@ export function PlantDetailScreen() {
               {/* ⚠️ Giftigheid */}
               {entry.toxicity && (
                 <InfoSection icon={AlertTriangle} title="Giftigheid">
-                  <p className={cn(
-                    'font-medium',
-                    entry.toxicity === 'niet-giftig' ? 'text-primary' : 'text-destructive',
-                  )}>
-                    {TOXICITY_LABEL[entry.toxicity]}
-                  </p>
-                  {entry.toxicityNotes && <p>{entry.toxicityNotes}</p>}
+                  {entry.toxicityNotes ? (
+                    <p>{entry.toxicityNotes}</p>
+                  ) : (
+                    <p className={cn(
+                      'font-medium',
+                      entry.toxicity === 'niet-giftig' ? 'text-primary' : 'text-destructive',
+                    )}>
+                      {TOXICITY_LABEL[entry.toxicity]}
+                    </p>
+                  )}
                 </InfoSection>
               )}
             </CardContent>
@@ -463,8 +466,9 @@ export function PlantDetailScreen() {
             <ul className="grid grid-cols-2 gap-2">
               {refImages.map((img, i) => {
                 const lbIndex = photoUrl ? i + 1 : i;
+                const isHero = !photoUrl && plant.heroImageUrl === img.thumbUrl;
                 return (
-                  <li key={img.title} className="aspect-square overflow-hidden rounded-md bg-muted">
+                  <li key={img.title} className="relative aspect-square overflow-hidden rounded-md bg-muted">
                     <button
                       type="button"
                       className="h-full w-full"
@@ -478,6 +482,24 @@ export function PlantDetailScreen() {
                         className="h-full w-full object-cover"
                       />
                     </button>
+                    {/* Knop om als hoofdfoto in te stellen */}
+                    {!isHero && (
+                      <button
+                        type="button"
+                        onClick={async () => {
+                          await db.plants.update(plant.id, { heroImageUrl: img.thumbUrl });
+                        }}
+                        className="absolute bottom-1.5 right-1.5 flex items-center gap-1 rounded-full bg-black/50 px-2 py-1 text-[10px] font-medium text-white backdrop-blur-sm transition-colors active:bg-black/70"
+                        aria-label="Kies als hoofdfoto"
+                      >
+                        <ImageIcon size={12} /> Hoofdfoto
+                      </button>
+                    )}
+                    {isHero && (
+                      <div className="absolute bottom-1.5 right-1.5 flex items-center gap-1 rounded-full bg-primary px-2 py-1 text-[10px] font-medium text-primary-foreground">
+                        <Check size={12} /> Hoofdfoto
+                      </div>
+                    )}
                   </li>
                 );
               })}

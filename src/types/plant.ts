@@ -21,6 +21,7 @@ export interface MyPlant {
   location: Location;
   room?: string;
   photo?: Blob;
+  heroImageUrl?: string;   // Wikimedia URL als hoofdfoto (alternatief voor eigen foto)
   notes?: string;
   lastPrunedAt?: string; // ISO date
   addedAt: string;       // ISO date

@@ -57,7 +57,7 @@ export function HomeScreen() {
         <img
           src={WORDLOGO}
           alt="BladWijzer"
-          className="h-12 w-auto shrink-0 md:h-16 dark:invert"
+          className="h-12 w-auto shrink-0 rounded-lg md:h-16"
         />
       </header>
 

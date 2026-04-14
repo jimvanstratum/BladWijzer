@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/Button';
 import { Card, CardContent } from '@/components/ui/Card';
 import { searchCatalog } from '@/data/catalog';
 import { db } from '@/data/db';
+import { fetchPlantImages } from '@/services/wikimedia';
 import type { CatalogEntry, Location, MyPlant } from '@/types/plant';
 import { formatPruneMonths } from '@/lib/prune';
 import { cn } from '@/lib/utils';
@@ -40,16 +41,30 @@ export function AddPlantScreen() {
   const save = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim() || !commonName.trim()) return;
+
+    // Probeer automatisch een hoofdfoto te vinden via Wikimedia
+    let heroImageUrl: string | undefined;
+    const latin = latinName.trim();
+    if (latin && !photoBlob) {
+      try {
+        const imgs = await fetchPlantImages(latin, 1);
+        if (imgs.length > 0) heroImageUrl = imgs[0].thumbUrl;
+      } catch {
+        // Geen probleem — de plant wordt zonder hero opgeslagen
+      }
+    }
+
     const plant: MyPlant = {
       id: uuid(),
       name: name.trim(),
       commonName: commonName.trim(),
-      latinName: latinName.trim() || undefined,
+      latinName: latin || undefined,
       catalogId: selected?.id,
       location,
       room: room.trim() || undefined,
       notes: notes.trim() || undefined,
       photo: photoBlob ?? undefined,
+      heroImageUrl,
       addedAt: new Date().toISOString(),
     };
     await db.plants.put(plant);
