@@ -44,17 +44,8 @@ export function HomeScreen() {
   return (
     <div className="flex flex-col gap-4 pb-4">
       <header className="flex items-start justify-between gap-3 border-b border-border px-4 py-5 md:px-6 md:py-6">
-        <div className="flex-1">
-          <div className="flex items-center gap-2">
-            <h1 className="font-serif text-2xl font-medium text-fg md:text-3xl">Mijn planten</h1>
-            <Link
-              to="/add"
-              className="flex h-7 w-7 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:bg-muted hover:text-fg"
-              aria-label="Plant toevoegen"
-            >
-              <Plus size={14} />
-            </Link>
-          </div>
+        <div>
+          <h1 className="font-serif text-2xl font-medium text-fg md:text-3xl">Mijn planten</h1>
           <p className="mt-0.5 text-sm text-muted-foreground">
             {plants?.length
               ? `${plants.length} ${plants.length === 1 ? 'plant' : 'planten'} in je collectie`
@@ -82,7 +73,7 @@ export function HomeScreen() {
             aria-label="Zoek in eigen planten"
           />
         </div>
-        <div className="flex gap-2" role="tablist">
+        <div className="flex items-center gap-2" role="tablist">
           {FILTERS.map(({ id, label }) => (
             <button
               key={id}
@@ -99,6 +90,13 @@ export function HomeScreen() {
               {label}
             </button>
           ))}
+          <Link
+            to="/add"
+            className="ml-auto flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground transition-colors hover:bg-muted/70 hover:text-fg"
+            aria-label="Plant toevoegen"
+          >
+            <Plus size={16} />
+          </Link>
         </div>
       </div>
 
