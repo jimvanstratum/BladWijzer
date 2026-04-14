@@ -232,7 +232,7 @@ export function SettingsScreen() {
               BladWijzer — persoonlijke plantenapp. Data staat lokaal op dit toestel. Afbeeldingen
               worden getoond via Wikimedia Commons.
             </p>
-            <p className="text-xs text-muted-foreground">Versie 0.7.1 · 322 planten</p>
+            <p className="text-xs text-muted-foreground">Versie 0.8.0 · 322 planten</p>
             <button
               onClick={() => {
                 if (confirm('Alle caches wissen en herladen? Je plantendata blijft behouden.')) {

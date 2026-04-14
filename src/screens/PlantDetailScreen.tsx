@@ -166,8 +166,20 @@ export function PlantDetailScreen() {
       .finally(() => setLoadingImages(false));
   }, [plant?.latinName]);
 
+  // Preview van nieuw geselecteerde foto in edit mode
+  const [editPhotoPreview, setEditPhotoPreview] = useState<string | null>(null);
+  useEffect(() => {
+    if (!editPhoto) {
+      setEditPhotoPreview(null);
+      return;
+    }
+    const url = URL.createObjectURL(editPhoto);
+    setEditPhotoPreview(url);
+    return () => URL.revokeObjectURL(url);
+  }, [editPhoto]);
+
   // heroImageUrl heeft voorrang als die expliciet is ingesteld
-  const heroSrc = plant?.heroImageUrl ?? photoUrl ?? refImages[0]?.thumbUrl ?? null;
+  const heroSrc = editPhotoPreview ?? plant?.heroImageUrl ?? photoUrl ?? refImages[0]?.thumbUrl ?? null;
 
   // Unified image list voor lightbox
   const lightboxImages = useMemo<LightboxImage[]>(() => {

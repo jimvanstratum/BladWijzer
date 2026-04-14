@@ -1,11 +1,15 @@
 import { useEffect, useState } from 'react';
+import { useIsDark } from '@/hooks/useIsDark';
 import { cn } from '@/lib/utils';
 
 const MIN_DURATION_MS = 900;
 const FADE_DURATION_MS = 400;
+const WORDLOGO = `${import.meta.env.BASE_URL}wordlogo.svg`;
+const WORDLOGO_DARK = `${import.meta.env.BASE_URL}wordlogo-dark.svg`;
 
 export function SplashScreen() {
   const [phase, setPhase] = useState<'visible' | 'fading' | 'hidden'>('visible');
+  const isDark = useIsDark();
 
   useEffect(() => {
     const fadeTimer = setTimeout(() => setPhase('fading'), MIN_DURATION_MS);
@@ -36,9 +40,9 @@ export function SplashScreen() {
         className="h-20 w-20 rounded-2xl shadow-md"
       />
       <img
-        src={`${import.meta.env.BASE_URL}wordlogo.svg`}
+        src={isDark ? WORDLOGO_DARK : WORDLOGO}
         alt="BladWijzer"
-        className="h-10 max-w-[70vw] dark:invert"
+        className="h-10 max-w-[70vw]"
       />
     </div>
   );

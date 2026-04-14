@@ -1,6 +1,10 @@
 import { NavLink } from 'react-router-dom';
 import { Home, Scissors, Plus, BookOpen, Settings } from 'lucide-react';
+import { useIsDark } from '@/hooks/useIsDark';
 import { cn } from '@/lib/utils';
+
+const WORDLOGO = `${import.meta.env.BASE_URL}wordlogo.svg`;
+const WORDLOGO_DARK = `${import.meta.env.BASE_URL}wordlogo-dark.svg`;
 
 const items = [
   { to: '/', label: 'Planten', icon: Home, end: true },
@@ -53,6 +57,7 @@ export function BottomNav() {
 }
 
 export function SideNav() {
+  const isDark = useIsDark();
   return (
     <nav
       className="hidden w-60 shrink-0 border-r border-border bg-bg px-4 py-6 md:flex md:flex-col"
@@ -60,9 +65,9 @@ export function SideNav() {
     >
       <div className="mb-6 px-2">
         <img
-          src={`${import.meta.env.BASE_URL}wordlogo.svg`}
+          src={isDark ? WORDLOGO_DARK : WORDLOGO}
           alt="BladWijzer"
-          className="h-8 w-auto dark:invert"
+          className="h-8 w-auto"
         />
       </div>
       <ul className="flex flex-col gap-1">

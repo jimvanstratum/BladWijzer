@@ -6,10 +6,12 @@ import { db } from '@/data/db';
 import { PlantCard } from '@/components/PlantCard';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
+import { useIsDark } from '@/hooks/useIsDark';
 import type { Location } from '@/types/plant';
 import { cn } from '@/lib/utils';
 
 const WORDLOGO = `${import.meta.env.BASE_URL}wordlogo.svg`;
+const WORDLOGO_DARK = `${import.meta.env.BASE_URL}wordlogo-dark.svg`;
 
 const FILTERS: Array<{ id: 'alle' | Location; label: string }> = [
   { id: 'alle', label: 'Alles' },
@@ -21,6 +23,7 @@ export function HomeScreen() {
   const plants = useLiveQuery(() => db.plants.orderBy('addedAt').reverse().toArray(), []);
   const [filter, setFilter] = useState<'alle' | Location>('alle');
   const [query, setQuery] = useState('');
+  const isDark = useIsDark();
 
   const filtered = useMemo(() => {
     if (!plants) return [];
@@ -55,7 +58,7 @@ export function HomeScreen() {
           </Button>
         </div>
         <img
-          src={WORDLOGO}
+          src={isDark ? WORDLOGO_DARK : WORDLOGO}
           alt="BladWijzer"
           className="h-12 w-auto shrink-0 rounded-lg md:h-16"
         />
