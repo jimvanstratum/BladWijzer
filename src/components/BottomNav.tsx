@@ -14,8 +14,11 @@ export function BottomNav() {
   return (
     <nav
       className={cn(
-        'shrink-0 border-t border-border bg-bg',
+        'relative shrink-0 border-t border-border bg-bg',
         'md:hidden',
+        // ::after pseudo-element laat bg doorlopen voorbij de viewport
+        // zodat de home-indicator zone dezelfde kleur heeft als de nav.
+        'after:absolute after:left-0 after:right-0 after:top-full after:h-24 after:bg-bg',
       )}
       style={{ paddingBottom: 'var(--sab, 0px)' }}
       aria-label="Hoofdnavigatie"
