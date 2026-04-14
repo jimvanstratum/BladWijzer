@@ -7,6 +7,10 @@ export type PruneType =
   | 'onderhoud'
   | 'geen';
 
+export type SunLight = 'vol-zon' | 'halfschaduw' | 'schaduw' | 'vol-zon-halfschaduw' | 'halfschaduw-schaduw';
+export type WaterNeeds = 'weinig' | 'matig' | 'veel';
+export type Toxicity = 'niet-giftig' | 'licht-giftig' | 'giftig' | 'zeer-giftig';
+
 /** Eén plant in de eigen inventaris (IndexedDB). */
 export interface MyPlant {
   id: string;
@@ -29,9 +33,36 @@ export interface CatalogEntry {
   latinName: string;
   category: Category;
   locationHint: Location[];
-  pruneMonths: number[]; // 1..12
+
+  // Snoei
+  pruneMonths: number[];   // 1..12
   pruneType: PruneType;
   pruneNotes?: string;
+
+  // Standplaats
+  sunLight?: SunLight;
+  frostHardy?: boolean;    // vorstbestendig
+
+  // Water
+  waterNeeds?: WaterNeeds;
+  waterNotes?: string;     // bijv. "Laat de grond opdrogen tussen beurten"
+
+  // Bloei
+  bloomMonths?: number[];  // 1..12
+  bloomColor?: string;     // bijv. "roze, wit"
+
+  // Grond & voeding
+  soilType?: string;       // bijv. "humusrijk, goed doorlatend"
+  fertilizeNotes?: string; // bijv. "Bemest maandelijks in het groeiseizoen"
+
+  // Giftigheid
+  toxicity?: Toxicity;
+  toxicityNotes?: string;  // bijv. "Giftig voor katten en honden"
+
+  // Beschrijving
+  description?: string;    // korte NL-beschrijving (2-3 zinnen)
+
+  // Zoek
   aliases?: string[];
 }
 
@@ -41,4 +72,25 @@ export const PRUNE_TYPE_LABEL: Record<PruneType, string> = {
   'vorm-snoei': 'Vormsnoei',
   onderhoud: 'Onderhoudssnoei',
   geen: 'Niet snoeien',
+};
+
+export const SUN_LIGHT_LABEL: Record<SunLight, string> = {
+  'vol-zon': 'Volle zon',
+  'halfschaduw': 'Halfschaduw',
+  'schaduw': 'Schaduw',
+  'vol-zon-halfschaduw': 'Zon tot halfschaduw',
+  'halfschaduw-schaduw': 'Halfschaduw tot schaduw',
+};
+
+export const WATER_NEEDS_LABEL: Record<WaterNeeds, string> = {
+  weinig: 'Weinig water',
+  matig: 'Matig water',
+  veel: 'Veel water',
+};
+
+export const TOXICITY_LABEL: Record<Toxicity, string> = {
+  'niet-giftig': 'Niet giftig',
+  'licht-giftig': 'Licht giftig',
+  'giftig': 'Giftig',
+  'zeer-giftig': 'Zeer giftig',
 };
