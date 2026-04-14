@@ -57,7 +57,7 @@ export function AddPlantScreen() {
   };
 
   return (
-    <div className="flex flex-col gap-4 pb-24 md:pb-6">
+    <div className="flex flex-col gap-4 pb-4">
       <AppHeader title="Plant toevoegen" subtitle="Zoek in de catalogus of voer handmatig in" />
 
       {!manual && (

@@ -26,7 +26,7 @@ export function CatalogScreen() {
   }, [query, category]);
 
   return (
-    <div className="flex flex-col gap-4 pb-24 md:pb-6">
+    <div className="flex flex-col gap-4 pb-4">
       <AppHeader title="Catalogus" subtitle={`${CATALOG.length} soorten met snoei-informatie`} />
 
       <div className="flex flex-col gap-3 px-4 md:px-6">
@@ -62,7 +62,7 @@ export function CatalogScreen() {
         </div>
       </div>
 
-      <ul className="flex flex-col gap-2 px-4 md:px-6">
+      <ul className="flex flex-col gap-2 overflow-hidden px-4 md:px-6">
         {results.map((entry) => (
           <li
             key={entry.id}
@@ -72,13 +72,13 @@ export function CatalogScreen() {
               <Leaf size={20} className="mt-0.5 shrink-0 text-primary" strokeWidth={1.5} />
               <div className="flex-1 min-w-0">
                 <div className="flex items-start justify-between gap-2">
-                  <div>
+                  <div className="min-w-0 flex-1">
                     <p className="font-medium text-fg">{entry.commonName}</p>
                     <p className="truncate text-xs italic text-muted-foreground">
                       {entry.latinName}
                     </p>
                   </div>
-                  <Badge tone="neutral">{entry.category}</Badge>
+                  <Badge tone="neutral" className="shrink-0">{entry.category}</Badge>
                 </div>
                 <p className="mt-1 text-xs text-muted-foreground">
                   Snoeien: {formatPruneMonths(entry.pruneMonths)}
