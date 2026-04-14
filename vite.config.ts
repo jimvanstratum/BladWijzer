@@ -14,7 +14,7 @@ export default defineConfig({
   plugins: [
     react(),
     VitePWA({
-      registerType: 'prompt',
+      registerType: 'autoUpdate',
       includeAssets: ['icon.svg', 'wordlogo.svg'],
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,woff2,json}'],
