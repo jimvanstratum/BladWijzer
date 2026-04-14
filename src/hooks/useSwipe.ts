@@ -39,6 +39,8 @@ export function useSwipe(
 
   const startRef = useRef<{ x: number; y: number; t: number } | null>(null);
   const directionRef = useRef<'h' | 'v' | null>(null);
+  // Track current offset in refs so handleTouchEnd never reads stale state
+  const offsetRef = useRef({ x: 0, y: 0 });
   const optionsRef = useRef(options);
   optionsRef.current = options;
 
@@ -47,8 +49,10 @@ export function useSwipe(
   const atEndRef = useRef(atEnd);
   atEndRef.current = atEnd;
 
-  const threshold = options.threshold ?? 50;
-  const velocityThreshold = options.velocityThreshold ?? 0.4;
+  const thresholdRef = useRef(options.threshold ?? 50);
+  thresholdRef.current = options.threshold ?? 50;
+  const velocityRef = useRef(options.velocityThreshold ?? 0.4);
+  velocityRef.current = options.velocityThreshold ?? 0.4;
 
   const handleTouchStart = useCallback((e: TouchEvent) => {
     const touch = e.touches[0];
@@ -56,50 +60,48 @@ export function useSwipe(
     if (touch.clientX < 20 || touch.clientX > window.innerWidth - 20) return;
     startRef.current = { x: touch.clientX, y: touch.clientY, t: Date.now() };
     directionRef.current = null;
+    offsetRef.current = { x: 0, y: 0 };
     setState({ offsetX: 0, offsetY: 0, isSwiping: true });
   }, []);
 
-  const handleTouchMove = useCallback(
-    (e: TouchEvent) => {
-      if (!startRef.current) return;
-      const touch = e.touches[0];
-      const dx = touch.clientX - startRef.current.x;
-      const dy = touch.clientY - startRef.current.y;
+  const handleTouchMove = useCallback((e: TouchEvent) => {
+    if (!startRef.current) return;
+    const touch = e.touches[0];
+    const dx = touch.clientX - startRef.current.x;
+    const dy = touch.clientY - startRef.current.y;
 
-      // Direction lock na 10px
-      if (!directionRef.current && (Math.abs(dx) > 10 || Math.abs(dy) > 10)) {
-        directionRef.current = Math.abs(dx) > Math.abs(dy) ? 'h' : 'v';
-      }
+    // Direction lock na 10px
+    if (!directionRef.current && (Math.abs(dx) > 10 || Math.abs(dy) > 10)) {
+      directionRef.current = Math.abs(dx) > Math.abs(dy) ? 'h' : 'v';
+    }
 
-      if (directionRef.current === 'h') {
-        e.preventDefault(); // blokkeert scroll
-        // Rubber-band: dempen als we aan de rand zijn
-        let adjustedDx = dx;
-        if ((atStartRef.current && dx > 0) || (atEndRef.current && dx < 0)) {
-          adjustedDx = dx * 0.25;
-        }
-        setState({ offsetX: adjustedDx, offsetY: 0, isSwiping: true });
-      } else if (directionRef.current === 'v') {
-        const adjustedDy = Math.max(0, dy); // alleen omlaag
-        setState({ offsetX: 0, offsetY: adjustedDy, isSwiping: true });
+    if (directionRef.current === 'h') {
+      e.preventDefault(); // blokkeert scroll
+      // Rubber-band: dempen als we aan de rand zijn
+      let adjustedDx = dx;
+      if ((atStartRef.current && dx > 0) || (atEndRef.current && dx < 0)) {
+        adjustedDx = dx * 0.25;
       }
-    },
-    [],
-  );
+      offsetRef.current = { x: adjustedDx, y: 0 };
+      setState({ offsetX: adjustedDx, offsetY: 0, isSwiping: true });
+    } else if (directionRef.current === 'v') {
+      const adjustedDy = Math.max(0, dy); // alleen omlaag
+      offsetRef.current = { x: 0, y: adjustedDy };
+      setState({ offsetX: 0, offsetY: adjustedDy, isSwiping: true });
+    }
+  }, []);
 
   const handleTouchEnd = useCallback(() => {
     if (!startRef.current) return;
-    const { offsetX, offsetY } = (() => {
-      // Lees de laatste state — useRef niet nodig want we resetten toch
-      const el = containerRef.current;
-      if (!el) return { offsetX: 0, offsetY: 0 };
-      return state;
-    })();
 
+    // Read from ref — always fresh, never stale
+    const { x: offsetX, y: offsetY } = offsetRef.current;
     const dt = Date.now() - startRef.current.t;
     const vx = Math.abs(offsetX) / dt;
     const vy = Math.abs(offsetY) / dt;
 
+    const threshold = thresholdRef.current;
+    const velocityThreshold = velocityRef.current;
     const opts = optionsRef.current;
 
     if (directionRef.current === 'h') {
@@ -116,8 +118,9 @@ export function useSwipe(
 
     startRef.current = null;
     directionRef.current = null;
+    offsetRef.current = { x: 0, y: 0 };
     setState({ offsetX: 0, offsetY: 0, isSwiping: false });
-  }, [containerRef, state, threshold, velocityThreshold]);
+  }, []);
 
   useEffect(() => {
     const el = containerRef.current;

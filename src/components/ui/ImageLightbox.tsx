@@ -96,18 +96,19 @@ export function ImageLightbox({
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Portal>
         <Dialog.Overlay
-          className="fixed inset-0 z-50 bg-black transition-opacity duration-200 data-[state=closed]:opacity-0"
-          style={{ opacity: bgOpacity }}
+          className="fixed left-0 top-0 z-50 w-full bg-black transition-opacity duration-200 data-[state=closed]:opacity-0"
+          style={{ height: 'var(--app-height, 100dvh)', opacity: bgOpacity }}
         />
         <Dialog.Content
           ref={containerRef}
           onKeyDown={handleKeyDown}
           aria-label={`Afbeelding ${index + 1} van ${total}: ${current.alt}`}
           className={cn(
-            'fixed inset-0 z-50 flex flex-col bg-black outline-none',
+            'fixed left-0 top-0 z-50 flex w-full flex-col bg-black outline-none',
             'data-[state=open]:animate-in data-[state=open]:fade-in-0',
             'data-[state=closed]:animate-out data-[state=closed]:fade-out-0',
           )}
+          style={{ height: 'var(--app-height, 100dvh)' }}
         >
           {/* Header */}
           <div className="flex shrink-0 items-center justify-between px-4 py-3" style={{ paddingTop: 'calc(env(safe-area-inset-top, 0px) + 12px)' }}>
@@ -176,7 +177,7 @@ export function ImageLightbox({
           </div>
 
           {/* Bottom spacer voor safe area */}
-          <div className="shrink-0" style={{ height: 'var(--sab, 0px)' }} />
+          <div className="shrink-0" style={{ height: 'env(safe-area-inset-bottom, 0px)' }} />
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>
