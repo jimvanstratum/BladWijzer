@@ -67,16 +67,13 @@
     overflow: hidden;
   }
 
-  /* App-shell: vult volledig scherm, nav als flex-child onderaan.
-     --app-height wordt via JS gezet op window.innerHeight (die op iOS PWA
-     standalone met viewport-fit=cover de volledige schermhoogte geeft,
-     inclusief safe-area zones). Fallback: 100dvh. */
+  /* App-shell: vult het volledige scherm via inset:0.
+     Geen height nodig — top:0 + bottom:0 bepaalt de hoogte.
+     Op iOS PWA met viewport-fit=cover dekt dit het hele scherm
+     inclusief de home-indicator zone. */
   .app-shell {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: var(--app-height, 100dvh);
+    inset: 0;
     display: flex;
     flex-direction: column;
     padding-top: env(safe-area-inset-top, 0px);
