@@ -232,7 +232,19 @@ export function SettingsScreen() {
               BladWijzer — persoonlijke plantenapp. Data staat lokaal op dit toestel. Afbeeldingen
               worden getoond via Wikimedia Commons.
             </p>
-            <p className="text-xs text-muted-foreground">Versie 0.2.0</p>
+            <p className="text-xs text-muted-foreground">Versie 0.3.0 (build 2026-04-14)</p>
+            <button
+              onClick={() => {
+                if (confirm('Alle caches wissen en herladen? Je plantendata blijft behouden.')) {
+                  caches.keys().then(names => Promise.all(names.map(n => caches.delete(n)))).then(() => {
+                    window.location.reload();
+                  });
+                }
+              }}
+              className="mt-2 text-xs text-primary underline"
+            >
+              Cache wissen en herladen
+            </button>
           </CardContent>
         </Card>
       </section>

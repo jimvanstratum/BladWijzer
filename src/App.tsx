@@ -16,14 +16,21 @@ export default function App() {
       document.documentElement.setAttribute('data-theme', stored);
     }
 
-    // ── Vocado-patroon: meet viewport hoogte ──
-    // visualViewport.height geeft op iOS PWA standalone de juiste
-    // hoogte (tot y=793), terwijl CSS 100vh/100dvh soms afwijkt.
-    // requestAnimationFrame + setTimeout(300) vangt iOS timing-quirks.
+    // ── Meet viewport hoogte ──
+    // In iOS PWA standalone mode geven window.innerHeight en
+    // visualViewport.height soms een te kleine waarde (minus de
+    // Safari URL-balk hoogte, ook al is er geen balk).
+    // Oplossing: in standalone mode gebruiken we screen.height
+    // (volledige fysieke schermhoogte). In de browser gebruiken we
+    // visualViewport.height (die houdt rekening met de URL-balk).
+    const isStandalone =
+      window.matchMedia('(display-mode: standalone)').matches ||
+      (navigator as Navigator & { standalone?: boolean }).standalone === true;
+
     function setH() {
-      const h = window.visualViewport
-        ? window.visualViewport.height
-        : window.innerHeight;
+      const h = isStandalone
+        ? screen.height
+        : (window.visualViewport?.height ?? window.innerHeight);
       document.documentElement.style.setProperty('--app-height', `${h}px`);
     }
     setH();
