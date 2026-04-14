@@ -68,16 +68,15 @@
   }
 
   /* App-shell: vult volledig scherm, nav als flex-child onderaan.
-     100dvh = dynamic viewport height, werkt correct op iOS 15.4+ PWA.
-     Geen bottom:0 — iOS PWA knipt dat soms af. */
+     --app-height wordt via JS gezet op window.innerHeight (die op iOS PWA
+     standalone met viewport-fit=cover de volledige schermhoogte geeft,
+     inclusief safe-area zones). Fallback: 100dvh. */
   .app-shell {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    height: 100dvh;
-    height: 100vh; /* fallback voor oudere browsers */
-    height: 100dvh; /* override: dvh is nauwkeuriger op mobiel */
+    height: var(--app-height, 100dvh);
     display: flex;
     flex-direction: column;
     padding-top: env(safe-area-inset-top, 0px);

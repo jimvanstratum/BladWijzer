@@ -16,6 +16,20 @@ export default function App() {
       document.documentElement.setAttribute('data-theme', stored);
     }
 
+    // ── Meet werkelijke viewport-hoogte ──
+    // window.innerHeight geeft op iOS PWA standalone met viewport-fit=cover
+    // de volledige schermhoogte inclusief safe-area zones.
+    // 100dvh doet dat niet altijd — die sluit soms de home-indicator uit.
+    function setH() {
+      const h = window.innerHeight;
+      document.documentElement.style.setProperty('--app-height', `${h}px`);
+    }
+    setH();
+    requestAnimationFrame(setH);
+    setTimeout(setH, 300);
+    window.addEventListener('resize', setH);
+    window.visualViewport?.addEventListener('resize', setH);
+
     // ── Meet safe-area-inset-bottom via DOM-element ──
     // env(safe-area-inset-bottom) werkt niet altijd direct in CSS
     // op iOS PWA standalone. We meten het via een verborgen element.
@@ -26,6 +40,11 @@ export default function App() {
     const sab = parseInt(getComputedStyle(probe).height) || 0;
     document.body.removeChild(probe);
     document.documentElement.style.setProperty('--sab', `${sab}px`);
+
+    return () => {
+      window.removeEventListener('resize', setH);
+      window.visualViewport?.removeEventListener('resize', setH);
+    };
   }, []);
 
   return (
