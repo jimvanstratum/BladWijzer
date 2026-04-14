@@ -20,6 +20,7 @@ export function PlantDetailScreen() {
   const [refImages, setRefImages] = useState<WikimediaImage[]>([]);
   const [loadingImages, setLoadingImages] = useState(false);
 
+  // Own photo blob → object URL
   useEffect(() => {
     if (!plant?.photo) {
       setPhotoUrl(null);
@@ -30,6 +31,7 @@ export function PlantDetailScreen() {
     return () => URL.revokeObjectURL(url);
   }, [plant?.photo]);
 
+  // Wikimedia reference images (also used as hero fallback)
   useEffect(() => {
     const latin = plant?.latinName;
     if (!latin) return;
@@ -39,6 +41,9 @@ export function PlantDetailScreen() {
       .catch(() => setRefImages([]))
       .finally(() => setLoadingImages(false));
   }, [plant?.latinName]);
+
+  // Hero image: own photo first, else first Wikimedia result
+  const heroSrc = photoUrl ?? refImages[0]?.thumbUrl ?? null;
 
   if (!plant) {
     return <p className="p-4 text-sm text-muted-foreground">Plant niet gevonden.</p>;
@@ -71,10 +76,10 @@ export function PlantDetailScreen() {
       </div>
 
       <div className="px-4 md:px-6">
-        <div className="aspect-square w-full overflow-hidden rounded-xl bg-muted">
-          {photoUrl ? (
+        <div className="aspect-[4/3] w-full overflow-hidden rounded-xl bg-muted">
+          {heroSrc ? (
             <img
-              src={photoUrl}
+              src={heroSrc}
               alt={`Foto van ${plant.name}`}
               className="h-full w-full object-cover"
             />

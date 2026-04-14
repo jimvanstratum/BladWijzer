@@ -40,19 +40,7 @@ export function HomeScreen() {
 
   return (
     <div className="flex flex-col gap-4 pb-24 md:pb-6">
-      <header className="flex flex-col gap-4 border-b border-border bg-gradient-to-b from-accent/15 to-transparent px-4 py-6 md:px-6 md:py-8">
-        <div className="flex items-center justify-between gap-3">
-          <img
-            src={WORDLOGO}
-            alt="BladWijzer"
-            className="h-8 max-w-[60vw] md:h-10 dark:invert"
-          />
-          <Button asChild size="sm" className="hidden md:inline-flex">
-            <Link to="/add">
-              <Plus size={16} /> Plant toevoegen
-            </Link>
-          </Button>
-        </div>
+      <header className="flex items-start justify-between gap-3 border-b border-border px-4 py-5 md:px-6 md:py-6">
         <div>
           <h1 className="font-serif text-2xl font-medium text-fg md:text-3xl">Mijn planten</h1>
           <p className="mt-0.5 text-sm text-muted-foreground">
@@ -60,7 +48,17 @@ export function HomeScreen() {
               ? `${plants.length} ${plants.length === 1 ? 'plant' : 'planten'} in je collectie`
               : 'Voeg je eerste plant toe'}
           </p>
+          <Button asChild size="sm" className="mt-3 hidden md:inline-flex">
+            <Link to="/add">
+              <Plus size={16} /> Plant toevoegen
+            </Link>
+          </Button>
         </div>
+        <img
+          src={WORDLOGO}
+          alt="BladWijzer"
+          className="h-12 w-auto shrink-0 md:h-16 dark:invert"
+        />
       </header>
 
       <div className="flex flex-col gap-3 px-4 md:px-6">

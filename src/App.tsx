@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { BottomNav, SideNav } from '@/components/BottomNav';
-import { SplashScreen } from '@/components/SplashScreen';
 import { UpdateBanner } from '@/components/UpdateBanner';
 import { HomeScreen } from '@/screens/HomeScreen';
 import { PlantDetailScreen } from '@/screens/PlantDetailScreen';
@@ -20,7 +19,6 @@ export default function App() {
 
   return (
     <>
-      <SplashScreen />
       <div className="flex min-h-full">
         <SideNav />
         <main className="flex-1">
