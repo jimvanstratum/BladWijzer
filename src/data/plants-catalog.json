@@ -7330,7 +7330,8 @@
     "description": "Kruiptijm is een aromatische bodembedekker die heerlijk geurt bij betreding. Bedekt zich in de zomer met roze-paarse bloemetjes die bijen aantrekken. Ideaal tussen tegels en in grindpaden.",
     "aliases": [
       "wilde tijm",
-      "brecklandtijm"
+      "brecklandtijm",
+      "bergsteentijm"
     ]
   },
   {
@@ -8992,6 +8993,1718 @@
     "aliases": [
       "stewartia",
       "japanese stewartia"
+    ]
+  },
+  {
+    "id": "persicaria-bistorta",
+    "commonName": "Adderwortel",
+    "latinName": "Persicaria bistorta",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      3,
+      10,
+      11
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Knip in het najaar (oktober-november) de afgestorven bloemstengels en vergeeld blad terug tot net boven de grond. Je kunt ook wachten tot het vroege voorjaar (maart) — de wintersilhouetten bieden dekking aan insecten. Verwijder na de eerste bloei in juni de uitgebloeide stengels om een tweede bloei te stimuleren. Adderwortel breidt zich via wortelstokken flink uit; graaf in het voorjaar overtollige uitlopers uit om de groei te beperken. Deel de plant elke 3-4 jaar om hem vitaal te houden.",
+    "sunLight": "vol-zon-halfschaduw",
+    "frostHardy": true,
+    "waterNeeds": "veel",
+    "waterNotes": "Houdt van vochtige tot natte grond; ideaal langs vijverranden en in kleigrond.",
+    "bloomMonths": [
+      5,
+      6,
+      7
+    ],
+    "bloomColor": "roze",
+    "soilType": "Vochtige, humusrijke klei- of leemgrond",
+    "fertilizeNotes": "Eenmaal in het voorjaar bemesten met compost volstaat; niet overbemesten.",
+    "toxicity": "niet-giftig",
+    "toxicityNotes": "Niet giftig; de jonge bladeren zijn zelfs eetbaar.",
+    "description": "Adderwortel is een inheemse vaste plant met opvallende roze aren die boven het frisse groene blad uitsteken. Uitstekend voor vochtige borders en natuurlijke tuinen. Trekt vlinders en bijen aan.",
+    "aliases": [
+      "adderwortel",
+      "slangenkruid"
+    ]
+  },
+  {
+    "id": "lythrum-salicaria",
+    "commonName": "Kattenstaart",
+    "latinName": "Lythrum salicaria",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      3,
+      10,
+      11
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Knip de uitgebloeide bloemstengels na de bloei (september-oktober) terug om ongewenste uitzaai te voorkomen — kattenstaart zaait zich anders rijkelijk uit. In het najaar kun je het afgestorven bovengrondse deel afknippen tot 10 cm boven de grond, of wacht tot maart om insecten overwinteringskansen te bieden. Deel de plant elke 4-5 jaar in het vroege voorjaar om de groeikracht te behouden. Verwijder eventuele zaailingen die op ongewenste plekken opkomen.",
+    "sunLight": "vol-zon-halfschaduw",
+    "frostHardy": true,
+    "waterNeeds": "veel",
+    "waterNotes": "Staat graag in natte tot vochtige grond; uitstekend voor vijverranden en greppels.",
+    "bloomMonths": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "bloomColor": "paars-roze",
+    "soilType": "Vochtige tot natte, voedselrijke grond",
+    "fertilizeNotes": "Nauwelijks bemesting nodig in vochtige, voedselrijke grond. Eventueel compost in het voorjaar.",
+    "toxicity": "niet-giftig",
+    "toxicityNotes": "Niet giftig voor mens of dier.",
+    "description": "Kattenstaart is een prachtige inheemse waterplant met lange paars-roze bloemaren die van juni tot september bloeien. Ideaal voor vijverranden, natte borders en natuurtuinen. Een magneet voor bijen en vlinders.",
+    "aliases": [
+      "grote kattenstaart",
+      "gewone kattenstaart"
+    ]
+  },
+  {
+    "id": "digitalis-purpurea",
+    "commonName": "Vingerhoedskruid",
+    "latinName": "Digitalis purpurea",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      7,
+      8
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Knip na de bloei de uitgebloeide bloemstengel terug tot aan het bladrozet. Als je uitzaai wilt, laat dan één of twee stengels staan tot de zaden rijp zijn. Vingerhoedskruid is tweejarig: het eerste jaar vormt het een bladrozet, het tweede jaar bloeit het en sterft daarna af. Verwijder afgestorven planten in het najaar. Door regelmatig dode stengels te verwijderen, stimuleer je soms zijscheuten die nog een keer bloeien.",
+    "sunLight": "halfschaduw",
+    "frostHardy": true,
+    "waterNeeds": "matig",
+    "waterNotes": "Houd de grond licht vochtig maar niet drassig; verdraagt korte droge periodes.",
+    "bloomMonths": [
+      6,
+      7
+    ],
+    "bloomColor": "paars, roze, wit",
+    "soilType": "Humusrijke, licht zure, goed doorlatende grond",
+    "fertilizeNotes": "Licht bemesten met compost in het voorjaar.",
+    "toxicity": "zeer-giftig",
+    "toxicityNotes": "Alle delen zijn zeer giftig bij inname. Bevat digitalisglycosiden die het hart beïnvloeden. Houd kinderen en huisdieren bij de plant vandaan.",
+    "description": "Vingerhoedskruid is een elegante tweejarige plant met hoge bloemtrossen vol klokvormige bloemen. Geeft een sprookjesachtige sfeer aan schaduwrijke borders. Ondanks zijn schoonheid is de plant zeer giftig.",
+    "aliases": [
+      "vingerhoed",
+      "digitalis"
+    ]
+  },
+  {
+    "id": "aquilegia-vulgaris",
+    "commonName": "Akelei",
+    "latinName": "Aquilegia vulgaris",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      7,
+      8
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Knip de uitgebloeide bloemstengels na de bloei terug tot aan het basale blad om ongewenste uitzaai te beperken. Wil je dat de plant zich uitzaait, laat dan enkele stengels met zaaddozen staan. In het najaar (oktober-november) sterft het bovengrondse blad af; ruim dit op of laat het liggen als winterdekking. Akelei kruist gemakkelijk met andere soorten, waardoor spontane zaailingen verrassende kleuren kunnen hebben. Deel overvolle pollen in het voorjaar.",
+    "sunLight": "halfschaduw",
+    "frostHardy": true,
+    "waterNeeds": "matig",
+    "waterNotes": "Matig water geven; verdraagt lichte droogte maar staat liever niet te droog.",
+    "bloomMonths": [
+      5,
+      6
+    ],
+    "bloomColor": "blauw, paars, roze, wit",
+    "soilType": "Humusrijke, goed doorlatende grond",
+    "fertilizeNotes": "Een schep compost in het voorjaar is voldoende.",
+    "toxicity": "giftig",
+    "toxicityNotes": "Alle delen zijn giftig bij inname; veroorzaakt maag-darmklachten.",
+    "description": "Akelei is een sierlijke vaste plant met bijzondere, gespoorde bloemen in vele kleuren. Zaait zich gemakkelijk uit en verrast elk jaar met nieuwe kleurcombinaties. Past perfect in cottage-gardens en halfschaduw.",
+    "aliases": [
+      "wilde akelei",
+      "aquilegia"
+    ]
+  },
+  {
+    "id": "eupatorium-cannabinum",
+    "commonName": "Koninginnekruid",
+    "latinName": "Eupatorium cannabinum",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      3,
+      11
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Knip in november of maart alle stengels terug tot 10-15 cm boven de grond. Laat de stengels bij voorkeur tot het voorjaar staan: ze bieden beschutting aan insecten en de zaadpluizen zijn decoratief in de winter. Koninginnekruid wordt fors (tot 150 cm); pinch de toppen in mei om een compactere, meer vertakte plant te krijgen. Deel de plant elke 3-4 jaar om woekeren te voorkomen. Verwijder ongewenste zaailingen tijdig.",
+    "sunLight": "vol-zon-halfschaduw",
+    "frostHardy": true,
+    "waterNeeds": "veel",
+    "waterNotes": "Houdt van vochtige grond; ideaal langs waterkanten.",
+    "bloomMonths": [
+      7,
+      8,
+      9
+    ],
+    "bloomColor": "roze-paars",
+    "soilType": "Vochtige, voedselrijke grond",
+    "fertilizeNotes": "In voedselrijke grond is extra bemesting niet nodig.",
+    "toxicity": "licht-giftig",
+    "toxicityNotes": "Bevat pyrrolizidine-alkaloïden; niet eten. Niet gevaarlijk bij aanraking.",
+    "description": "Koninginnekruid is een imposante inheemse vaste plant met pluizige roze-paarse bloemschermen. Een van de beste vlinderplanten voor de Nederlandse tuin. Past uitstekend in natuurlijke en waterrijke tuinen.",
+    "aliases": [
+      "leverkruid",
+      "boelkenskruid"
+    ]
+  },
+  {
+    "id": "filipendula-ulmaria",
+    "commonName": "Moerasspirea",
+    "latinName": "Filipendula ulmaria",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      3,
+      10,
+      11
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Knip in het najaar of vroege voorjaar de afgestorven stengels terug tot de grond. Verwijder uitgebloeide bloemschermen in de zomer als je een nettere aanblik wilt; de plant bloeit niet opnieuw, maar het blad blijft dan frisser. Moerasspirea breidt zich via wortelstokken uit; graaf jaarlijks langs de randen overtollige uitlopers weg. Deel de plant elke 4-5 jaar om hem te verjongen. Draagt geurige, crèmewitte bloemschermen die heerlijk ruiken.",
+    "sunLight": "vol-zon-halfschaduw",
+    "frostHardy": true,
+    "waterNeeds": "veel",
+    "waterNotes": "Vereist constant vochtige tot natte grond; slap blad duidt op watertekort.",
+    "bloomMonths": [
+      6,
+      7,
+      8
+    ],
+    "bloomColor": "crèmewit",
+    "soilType": "Vochtige tot natte, voedselrijke klei- of leemgrond",
+    "fertilizeNotes": "Meestal niet nodig in vochtige, rijke grond. Eventueel compost in het voorjaar.",
+    "toxicity": "niet-giftig",
+    "toxicityNotes": "Niet giftig; historisch gebruikt als geneeskruid (bevat salicylzuur).",
+    "description": "Moerasspirea is een inheemse plant met geurige, crèmewitte bloemschermen die veelvuldig in vochtige weilanden groeien. Ideaal voor vijverranden en natte plekken in de tuin. De bloemen hebben een zoete, honingachtige geur.",
+    "aliases": [
+      "filipendula",
+      "spirea"
+    ]
+  },
+  {
+    "id": "lysimachia-punctata",
+    "commonName": "Grote wederik",
+    "latinName": "Lysimachia punctata",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      3,
+      10
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Knip na de bloei de uitgebloeide stengels terug voor een nettere uitstraling; of laat ze staan tot het najaar en knip dan alles terug tot de grond. Grote wederik is een woekervaste plant: houd de uitbreiding in toom door jaarlijks in het voorjaar of najaar overtollige uitlopers met de spade af te steken. Deel de plant elke 3-4 jaar. Plant bij voorkeur met een wortelscherm als je verspreiding wilt beperken. Geen bijzondere snoeitechniek nodig, gewoon oud blad opruimen.",
+    "sunLight": "vol-zon-halfschaduw",
+    "frostHardy": true,
+    "waterNeeds": "matig",
+    "waterNotes": "Houdt van vochtige grond, maar verdraagt normale tuingrond goed.",
+    "bloomMonths": [
+      6,
+      7,
+      8
+    ],
+    "bloomColor": "geel",
+    "soilType": "Normale tot vochtige tuingrond",
+    "fertilizeNotes": "Niet bemesten noodzakelijk; groeit al sterk genoeg.",
+    "toxicity": "niet-giftig",
+    "toxicityNotes": "Niet giftig voor mens of dier.",
+    "description": "Grote wederik is een krachtige vaste plant met heldergele bloemen die in kransen rond de stengel staan. Bloeit rijkelijk en is goed winterhard, maar kan flink woekeren. Geschikt voor natuurlijke borders en halfschaduw.",
+    "aliases": [
+      "puntwederik",
+      "wederik"
+    ]
+  },
+  {
+    "id": "primula-veris",
+    "commonName": "Gulden sleutelbloem",
+    "latinName": "Primula veris",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      6,
+      7
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Verwijder na de bloei de uitgebloeide bloemstengels, maar laat het bladrozet intact — dit voedt de wortels voor volgend jaar. Als je uitzaai wilt, laat dan enkele zaadhoofden uitrijpen. In het najaar sterft het blad deels af; laat het liggen als bescherming of ruim het op in het vroege voorjaar. Gulden sleutelbloem heeft weinig onderhoud nodig. Deel overvolle pollen na de bloei om de plant te verjongen. Mulch licht met bladcompost in de herfst.",
+    "sunLight": "halfschaduw",
+    "frostHardy": true,
+    "waterNeeds": "matig",
+    "waterNotes": "Houd de grond licht vochtig, vooral in het voorjaar tijdens de bloei.",
+    "bloomMonths": [
+      4,
+      5
+    ],
+    "bloomColor": "geel",
+    "soilType": "Kalkrijke, vochthoudende, goed doorlatende grond",
+    "fertilizeNotes": "Licht bemesten met compost of bladaarde in de herfst.",
+    "toxicity": "niet-giftig",
+    "toxicityNotes": "Niet giftig; bloemen zijn zelfs eetbaar.",
+    "description": "De gulden sleutelbloem is een beschermd inheems plantje met geurige gele bloemen op korte stengels. Bloeit vroeg in het voorjaar en geeft kleur aan halfschaduwrijke borders en natuurtuinen. Trekt vroege bestuivers aan.",
+    "aliases": [
+      "sleutelbloem",
+      "echte sleutelbloem"
+    ]
+  },
+  {
+    "id": "polemonium-caeruleum",
+    "commonName": "Jacobsladder",
+    "latinName": "Polemonium caeruleum",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      7,
+      8
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Knip de uitgebloeide bloemstengels direct na de bloei terug tot het basale blad; dit kan een tweede, lichtere bloei opleveren in de nazomer. In het najaar sterft het bovengrondse deel af; knip alles terug tot de grond. Jacobsladder zaait zich matig uit; verwijder zaailingen als ze ongewenst zijn. Deel overvolle planten elke 3-4 jaar in het voorjaar. De plant is kortlevend (3-5 jaar), maar zaait zichzelf in stand.",
+    "sunLight": "halfschaduw",
+    "frostHardy": true,
+    "waterNeeds": "matig",
+    "waterNotes": "Houd de grond gelijkmatig vochtig; verdraagt geen langdurige droogte.",
+    "bloomMonths": [
+      5,
+      6,
+      7
+    ],
+    "bloomColor": "blauw, paars",
+    "soilType": "Humusrijke, vochtige, goed doorlatende grond",
+    "fertilizeNotes": "Bemest in het voorjaar licht met compost.",
+    "toxicity": "niet-giftig",
+    "toxicityNotes": "Niet giftig voor mens of dier.",
+    "description": "Jacobsladder is een elegante inheemse vaste plant met geveerde bladeren en trossen helderblauw tot paarse bloemen. Uitstekend voor halfschaduwrijke borders en bostuinen. De naam verwijst naar het trapsgewijs gerangschikte blad.",
+    "aliases": [
+      "jacobsladder",
+      "grieks valeriaankruid"
+    ]
+  },
+  {
+    "id": "trollius-europaeus",
+    "commonName": "Europese trollius",
+    "latinName": "Trollius europaeus",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      7,
+      8,
+      10
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Knip na de bloei (juli) de uitgebloeide stengels terug tot het basale blad om de plant energie te laten steken in de wortelgroei. Een tweede, lichtere bloei is soms mogelijk als je snel na de eerste bloei terugknipt. In het najaar sterft het blad af; ruim het op of laat het als winterdekking liggen. Deel overvolle planten in september-oktober of in maart. Trollius is een beschermde soort in de wilde natuur — plant alleen gekweekte exemplaren.",
+    "sunLight": "vol-zon-halfschaduw",
+    "frostHardy": true,
+    "waterNeeds": "veel",
+    "waterNotes": "Vereist constant vochtige grond; laat de wortels nooit uitdrogen.",
+    "bloomMonths": [
+      5,
+      6
+    ],
+    "bloomColor": "geel",
+    "soilType": "Vochtige, humusrijke, licht zure grond",
+    "fertilizeNotes": "Bemest in het voorjaar met compost of organische mest.",
+    "toxicity": "licht-giftig",
+    "toxicityNotes": "Licht giftig bij inname; kan huidirritatie veroorzaken bij gevoelige personen.",
+    "description": "De Europese trollius is een prachtige vochtminnende plant met bolvormige, botergele bloemen. In het wild komt hij voor in natte bergweiden. Ideaal voor vijverranden en vochtige borders in de tuin.",
+    "aliases": [
+      "kogelbloem",
+      "trollbloem",
+      "boterbloem"
+    ]
+  },
+  {
+    "id": "thalictrum-aquilegiifolium",
+    "commonName": "Akeleiruit",
+    "latinName": "Thalictrum aquilegiifolium",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      10,
+      11,
+      3
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Knip na de bloei de uitgebloeide stengels terug als je geen zaad wilt; de zaadhoofden zijn echter ook decoratief. In het najaar of vroege voorjaar knip je alle afgestorven stengels terug tot de grond. Akeleiruit kan steunen nodig hebben op winderige standplaatsen vanwege de hoogte (80-120 cm). Deel de plant elke 4-5 jaar in het voorjaar. Laat gevallen blad rond de basis liggen als winterbescherming voor de wortels.",
+    "sunLight": "halfschaduw",
+    "frostHardy": true,
+    "waterNeeds": "matig",
+    "waterNotes": "Houd de grond gelijkmatig vochtig; verdraagt geen droogte.",
+    "bloomMonths": [
+      5,
+      6,
+      7
+    ],
+    "bloomColor": "lila, roze, wit",
+    "soilType": "Humusrijke, vochtige, goed doorlatende grond",
+    "fertilizeNotes": "Bemest in het voorjaar met compost.",
+    "toxicity": "licht-giftig",
+    "toxicityNotes": "Licht giftig bij inname.",
+    "description": "Akeleiruit is een statige vaste plant met luchtige wolken van lila tot roze bloemen boven sierlijk, akeleiachtig blad. Geeft een etherische uitstraling aan borders en bostuinen. Trekt vlinders aan.",
+    "aliases": [
+      "ruit",
+      "thalictrum"
+    ]
+  },
+  {
+    "id": "chelone-obliqua",
+    "commonName": "Schildpadbloem",
+    "latinName": "Chelone obliqua",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      3,
+      11
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Knip in het najaar (november) of vroege voorjaar (maart) alle afgestorven stengels terug tot 5-10 cm boven de grond. De wintersilhouetten zijn niet bijzonder decoratief, dus najaarssnoei is prima. Pinch de toppen in mei-juni als je een compactere, meer vertakte plant wilt — dit levert meer bloemen op maar vertraagt de bloei iets. Deel de plant elke 3-4 jaar in het voorjaar om de groeikracht te behouden. Schildpadbloem is een onproblematische, betrouwbare najaarsbloeier.",
+    "sunLight": "halfschaduw",
+    "frostHardy": true,
+    "waterNeeds": "veel",
+    "waterNotes": "Houdt van vochtige grond; staat graag langs waterkanten.",
+    "bloomMonths": [
+      8,
+      9,
+      10
+    ],
+    "bloomColor": "roze-paars",
+    "soilType": "Vochtige, humusrijke grond",
+    "fertilizeNotes": "Bemest in het voorjaar met compost.",
+    "toxicity": "niet-giftig",
+    "toxicityNotes": "Niet giftig voor mens of dier.",
+    "description": "De schildpadbloem dankt zijn naam aan de bloemen die lijken op een schildpadkop. Bloeit laat in het seizoen (augustus-oktober) wanneer veel andere planten al uitgebloeid zijn. Uitstekende schaduwplant voor vochtige plekken.",
+    "aliases": [
+      "schildpadbloem"
+    ]
+  },
+  {
+    "id": "lychnis-flos-cuculi",
+    "commonName": "Echte koekoeksbloem",
+    "latinName": "Lychnis flos-cuculi",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      8,
+      9
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Knip na de bloei de uitgebloeide stengels terug tot het basale bladrozet. Wil je uitzaai, laat dan enkele zaadhoofden staan — koekoeksbloem zaait zich bescheiden uit. In het najaar sterft het bovengrondse deel af; ruim het op of laat het liggen. De plant is kortlevend (2-4 jaar) maar houdt zichzelf in stand door uitzaai. Deel overvolle pollen in het voorjaar. Weinig onderhoud nodig.",
+    "sunLight": "vol-zon-halfschaduw",
+    "frostHardy": true,
+    "waterNeeds": "veel",
+    "waterNotes": "Houdt van vochtige tot natte grond; ideaal voor weideborders.",
+    "bloomMonths": [
+      5,
+      6,
+      7
+    ],
+    "bloomColor": "roze",
+    "soilType": "Vochtige, voedselrijke grond",
+    "fertilizeNotes": "Niet bemesten noodzakelijk in voedselrijke grond.",
+    "toxicity": "niet-giftig",
+    "toxicityNotes": "Niet giftig voor mens of dier.",
+    "description": "De echte koekoeksbloem is een sierlijke inheemse wildeplant met gerafelde roze bloemblaadjes. Bloeit in het late voorjaar en past perfect in bloemenweiden en natuurlijke tuinen. Trekt vlinders en bijen aan.",
+    "aliases": [
+      "koekoeksbloem"
+    ]
+  },
+  {
+    "id": "sidalcea-malviflora",
+    "commonName": "Prairiemalva",
+    "latinName": "Sidalcea malviflora",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      8,
+      9,
+      3
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Knip na de bloei de uitgebloeide bloemstengels terug tot het basale blad; dit kan een lichte nabloei geven. In het najaar of vroege voorjaar alle afgestorven stengels tot de grond terugsnoeien. Prairiemalva kan op winderige plekken steun nodig hebben. Deel de plant elke 3-4 jaar in het voorjaar om de vitaliteit te behouden, want de plant is vrij kortlevend. Mulch in de herfst met compost als winterbescherming.",
+    "sunLight": "vol-zon",
+    "frostHardy": true,
+    "waterNeeds": "matig",
+    "waterNotes": "Matig water; verdraagt lichte droogte maar bloeit beter op vochtige grond.",
+    "bloomMonths": [
+      6,
+      7,
+      8
+    ],
+    "bloomColor": "roze",
+    "soilType": "Vruchtbare, goed doorlatende grond",
+    "fertilizeNotes": "Bemest in het voorjaar met compost of universele tuinmest.",
+    "toxicity": "niet-giftig",
+    "toxicityNotes": "Niet giftig voor mens of dier.",
+    "description": "Prairiemalva is een elegante vaste plant met slanke bloemaren vol satijnachtige roze bloemen. Doet denken aan een verfijndere stokroos. Prachtig in zonnige borders en prairiebeplantingen.",
+    "aliases": [
+      "sidalcea"
+    ]
+  },
+  {
+    "id": "sanguisorba-officinalis",
+    "commonName": "Grote pimpernel",
+    "latinName": "Sanguisorba officinalis",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      3,
+      11
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Laat de stengels bij voorkeur tot het voorjaar staan — de donkerrode bloemhoofden zijn ook in de winter decoratief. Knip in maart alle stengels terug tot vlak boven de grond voordat de nieuwe scheuten verschijnen. Grote pimpernel kan fors worden (tot 120 cm); pinch de toppen in juni voor een compactere plant. Deel elke 4-5 jaar in het voorjaar. De plant zaait zich licht uit; verwijder ongewenste zaailingen.",
+    "sunLight": "vol-zon-halfschaduw",
+    "frostHardy": true,
+    "waterNeeds": "matig",
+    "waterNotes": "Houdt van vochtige grond, maar verdraagt ook normale tuingrond.",
+    "bloomMonths": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "bloomColor": "donkerrood, bordeaux",
+    "soilType": "Vochtige, voedselrijke grond",
+    "fertilizeNotes": "Compost in het voorjaar; niet overbemesten.",
+    "toxicity": "niet-giftig",
+    "toxicityNotes": "Niet giftig; bladeren zijn eetbaar en worden soms in salades gebruikt.",
+    "description": "Grote pimpernel is een sierlijke inheemse plant met donkerrode, knoopachtige bloemhoofden op slanke stengels. Prachtig in prairiebeplantingen en natuurlijke tuinen. De fijngeveerde bladeren zijn ook decoratief.",
+    "aliases": [
+      "pimpernel",
+      "sorbenkruid"
+    ]
+  },
+  {
+    "id": "astrantia-major",
+    "commonName": "Zeeuws knoopje",
+    "latinName": "Astrantia major",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      7,
+      8,
+      3
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Knip na de eerste bloei in juli de uitgebloeide stengels terug tot het basale blad; dit stimuleert vaak een tweede bloei in de nazomer. In het najaar of vroege voorjaar kun je alle afgestorven stengels terugknippen tot de grond. Zeeuws knoopje zaait zich behoorlijk uit; verwijder zaadhoofden als je dit wilt voorkomen. Deel overvolle planten elke 3-4 jaar in het voorjaar. Mulch met compost in de herfst.",
+    "sunLight": "halfschaduw",
+    "frostHardy": true,
+    "waterNeeds": "matig",
+    "waterNotes": "Houd de grond licht vochtig; verdraagt geen langdurige droogte.",
+    "bloomMonths": [
+      6,
+      7,
+      8
+    ],
+    "bloomColor": "wit-roze, rood",
+    "soilType": "Humusrijke, vochtige, goed doorlatende grond",
+    "fertilizeNotes": "Licht bemesten met compost in het voorjaar.",
+    "toxicity": "niet-giftig",
+    "toxicityNotes": "Niet giftig voor mens of dier.",
+    "description": "Zeeuws knoopje is een charmante vaste plant met sierlijke, stervorming bloemschermen omgeven door papierachtige schutblaadjes. Uitstekend voor halfschaduw en cottageborders. De bloemen zijn ook mooi als snijbloem en gedroogd.",
+    "aliases": [
+      "astrantia",
+      "groot sterrenscherm"
+    ]
+  },
+  {
+    "id": "dicentra-formosa",
+    "commonName": "Gebroken hartje (westelijk)",
+    "latinName": "Dicentra formosa",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      10,
+      11
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Knip in het najaar het afgestorven blad en de uitgebloeide stengels terug tot de grond. Anders dan het gewone gebroken hartje (Lamprocapnos) blijft Dicentra formosa vaak doorbloeien tot in de herfst en trekt het blad zich niet terug in de zomer. Verwijder tijdens het seizoen uitgebloeide stengels om de bloei te verlengen. Deel overvolle planten elke 3-4 jaar in het najaar. De plant breidt zich langzaam uit via wortelstokken; beperk als gewenst.",
+    "sunLight": "halfschaduw-schaduw",
+    "frostHardy": true,
+    "waterNeeds": "matig",
+    "waterNotes": "Houd de grond licht vochtig; verdraagt meer droogte dan verwacht als het eenmaal gevestigd is.",
+    "bloomMonths": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "bloomColor": "roze",
+    "soilType": "Humusrijke, vochtige, goed doorlatende grond",
+    "fertilizeNotes": "Mulch jaarlijks met bladcompost; extra bemesting is niet nodig.",
+    "toxicity": "giftig",
+    "toxicityNotes": "Alle delen zijn giftig bij inname; bevat isoquinoline-alkaloïden.",
+    "description": "Dicentra formosa is een sierlijke schaduwplant met hartvormige roze bloemen boven fijn verdeeld, varenachtig blad. Bloeit veel langer dan het bekende gebroken hartje. Ideaal als bodembedekker onder bomen.",
+    "aliases": [
+      "gebroken hartje",
+      "dicentra"
+    ]
+  },
+  {
+    "id": "verbascum-thapsus",
+    "commonName": "Koningskaars",
+    "latinName": "Verbascum thapsus",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      9,
+      10
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Koningskaars is tweejarig: het eerste jaar vormt het een groot bladrozet, het tweede jaar een imposante bloemstengel. Knip na de bloei de bloemstengel af als je geen uitzaai wilt, of laat hem staan voor vogels en wintersilhouet. Verwijder de afgestorven plant na zaadvorming. Laat enkele zaaddozen staan zodat de plant zich kan uitzaaien en op de plek in stand blijft. Zaailingen op ongewenste plekken zijn makkelijk te verwijderen.",
+    "sunLight": "vol-zon",
+    "frostHardy": true,
+    "waterNeeds": "weinig",
+    "waterNotes": "Zeer droogtetolerant; houdt van droge, arme grond.",
+    "bloomMonths": [
+      6,
+      7,
+      8
+    ],
+    "bloomColor": "geel",
+    "soilType": "Droge, arme, goed doorlatende grond",
+    "fertilizeNotes": "Niet bemesten; gedijt beter op arme grond.",
+    "toxicity": "niet-giftig",
+    "toxicityNotes": "Niet giftig; historisch gebruikt als geneeskruid.",
+    "description": "De koningskaars is een spectaculaire tweejarige plant met een imposante gele bloemstengel die tot 2 meter hoog kan worden. De grote, viltige bladeren vormen het eerste jaar een opvallend zilvergrijs rozet. Prachtig in grindtuinen en droge borders.",
+    "aliases": [
+      "toorts",
+      "wolkruid"
+    ]
+  },
+  {
+    "id": "knautia-arvensis",
+    "commonName": "Beemdkroon",
+    "latinName": "Knautia arvensis",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      3,
+      10
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Knip na de bloei de uitgebloeide stengels terug om een mogelijke nabloei te stimuleren. In het najaar of vroege voorjaar knip je alle afgestorven stengels terug tot het basale bladrozet. Beemdkroon zaait zich matig uit; laat zaadhoofden staan als je verspreiding wilt. De plant is kortlevend (3-5 jaar) maar houdt zichzelf goed in stand door uitzaai. Verder vrijwel onderhoudsvrij. Laat de winterstengels staan voor insecten.",
+    "sunLight": "vol-zon",
+    "frostHardy": true,
+    "waterNeeds": "weinig",
+    "waterNotes": "Droogtetolerant; verdraagt arme, droge grond uitstekend.",
+    "bloomMonths": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "bloomColor": "lila-paars",
+    "soilType": "Goed doorlatende, kalkhoudende, matig voedselrijke grond",
+    "fertilizeNotes": "Niet bemesten; houdt van arme grond.",
+    "toxicity": "niet-giftig",
+    "toxicityNotes": "Niet giftig voor mens of dier.",
+    "description": "Beemdkroon is een inheemse wildeplant met lila-paarse bloemhoofden die op kleine scabiosa's lijken. Een absolute magneet voor vlinders, bijen en zweefvliegen. Past perfect in bloemenweiden en natuurtuinen.",
+    "aliases": [
+      "beemdkroon",
+      "veldscabiosa"
+    ]
+  },
+  {
+    "id": "succisa-pratensis",
+    "commonName": "Blauwe knoop",
+    "latinName": "Succisa pratensis",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      3,
+      11
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Laat de stengels na de bloei staan tot het voorjaar — ze bieden voedsel en dekking aan insecten in de winter. Knip in maart alle afgestorven stengels terug tot de grond. Blauwe knoop is de waardplant van het zeldzame gentiaanblauwtje; als je deze vlinder wilt aantrekken, knip dan niet voor april. Deel de plant elke 5-6 jaar in het voorjaar. Weinig onderhoud nodig; de plant woekert niet.",
+    "sunLight": "vol-zon-halfschaduw",
+    "frostHardy": true,
+    "waterNeeds": "matig",
+    "waterNotes": "Houdt van vochtige grond maar verdraagt normale tuingrond.",
+    "bloomMonths": [
+      7,
+      8,
+      9,
+      10
+    ],
+    "bloomColor": "blauw-paars",
+    "soilType": "Vochtige, matig voedselrijke grond",
+    "fertilizeNotes": "Niet bemesten; gedijt op matig voedselrijke grond.",
+    "toxicity": "niet-giftig",
+    "toxicityNotes": "Niet giftig voor mens of dier.",
+    "description": "Blauwe knoop is een waardevolle inheemse plant met ronde, blauw-paarse bloemhoofden. Essentieel voor het behoud van het zeldzame gentiaanblauwtje. Past in natuurtuinen, prairies en langs vijverranden.",
+    "aliases": [
+      "duivelsbeet"
+    ]
+  },
+  {
+    "id": "scabiosa-columbaria",
+    "commonName": "Kleine scabiosa",
+    "latinName": "Scabiosa columbaria",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      3,
+      10
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Knip regelmatig de uitgebloeide bloemstengels terug om de bloeiperiode te verlengen. In het najaar of vroege voorjaar knip je alle stengels terug tot het basale bladrozet. De plant is kortlevend (2-4 jaar) maar zaait zich goed uit; laat zaadhoofden staan als je dit wilt. Kleine scabiosa is bijzonder droogtetolerant en vraagt nauwelijks onderhoud. Deel eventueel in het voorjaar.",
+    "sunLight": "vol-zon",
+    "frostHardy": true,
+    "waterNeeds": "weinig",
+    "waterNotes": "Zeer droogtetolerant; mijdt natte grond.",
+    "bloomMonths": [
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "bloomColor": "lila-blauw",
+    "soilType": "Droge, kalkhoudende, goed doorlatende grond",
+    "fertilizeNotes": "Niet bemesten; houdt van arme grond.",
+    "toxicity": "niet-giftig",
+    "toxicityNotes": "Niet giftig voor mens of dier.",
+    "description": "Kleine scabiosa is een sierlijke inheemse plant met lila-blauwe, kussenvormige bloemen op slanke stengels. Bloeit van juni tot in de herfst en trekt onophoudelijk vlinders en bijen aan. Perfect voor droge, zonnige borders en grindtuinen.",
+    "aliases": [
+      "duifkruid",
+      "scabiosa"
+    ]
+  },
+  {
+    "id": "geranium-pratense",
+    "commonName": "Beemdooievaarsbek",
+    "latinName": "Geranium pratense",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      7,
+      8
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Knip na de eerste bloei (juli) alle bloemstengels en het blad terug tot net boven de grond ('Chelsea chop' achteraf). De plant maakt dan vers blad aan en bloeit soms licht na in de nazomer. Als je niet terugknipt, blijft het blad rommelig en gaat de plant plat liggen. Verwijder in het najaar het afgestorven blad. Deel overvolle planten elke 4-5 jaar in het najaar of voorjaar. De plant zaait zich uit; verwijder zaailingen als ongewenst.",
+    "sunLight": "vol-zon-halfschaduw",
+    "frostHardy": true,
+    "waterNeeds": "matig",
+    "waterNotes": "Normale waterbehoefte; verdraagt korte droge periodes.",
+    "bloomMonths": [
+      6,
+      7
+    ],
+    "bloomColor": "blauw-violet",
+    "soilType": "Normale, goed doorlatende tuingrond",
+    "fertilizeNotes": "Een schep compost in het voorjaar is voldoende.",
+    "toxicity": "niet-giftig",
+    "toxicityNotes": "Niet giftig voor mens of dier.",
+    "description": "Beemdooievaarsbek is een robuuste inheemse vaste plant met grote blauw-violette bloemen. Bloeit rijkelijk in juni-juli en vormt mooie pollen. Na terugknippen verschijnt er fris nieuw blad. Een onmisbare borderplant.",
+    "aliases": [
+      "beemd-ooievaarsbek",
+      "weidegeranium"
+    ]
+  },
+  {
+    "id": "stipa-tenuissima",
+    "commonName": "Vedergras",
+    "latinName": "Stipa tenuissima",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      3
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Knip in maart, vóór de nieuwe groei, het hele gras terug tot 10-15 cm boven de grond. Gebruik een heggeschaar of bind het gras samen en knip het dan in één keer af. Knip NIET in de herfst: de pluimen zijn decoratief in de winter en beschermen het hart tegen vorst. Kam of trek dode halmen uit het hart als de plant er rommelig uitziet. Vedergras zaait zich rijkelijk uit; verwijder zaailingen op ongewenste plekken. De plant is kortlevend (3-5 jaar).",
+    "sunLight": "vol-zon",
+    "frostHardy": true,
+    "waterNeeds": "weinig",
+    "waterNotes": "Zeer droogtetolerant; natte wintergrond is de grootste vijand.",
+    "bloomMonths": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "bloomColor": "zilvergroen, later goudblond",
+    "soilType": "Droge, goed doorlatende, arme grond",
+    "fertilizeNotes": "Niet bemesten; houdt van arme grond.",
+    "toxicity": "niet-giftig",
+    "toxicityNotes": "Niet giftig voor mens of dier.",
+    "description": "Vedergras is een fijn sierlijk siergras met haardunne pluimen die bij het minste briesje golven. Geeft een luchtig, dromerig effect in borders en grindtuinen. Prachtig in combinatie met vaste planten als salie en echinacea.",
+    "aliases": [
+      "vedergras",
+      "engelhaar"
+    ]
+  },
+  {
+    "id": "molinia-caerulea",
+    "commonName": "Pijpenstrootje",
+    "latinName": "Molinia caerulea",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      2,
+      3
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Knip in februari-maart het oude, afgestorven gras terug tot 5-10 cm boven de grond, voordat de nieuwe scheuten verschijnen. Pijpenstrootje is bijzonder netjes: de stengels vallen in de herfst vaak vanzelf uit de pol en laten zich dan wegtrekken. Laat de pluimen in de winter staan — ze zijn spectaculair decoratief. Deel overvolle pollen in het voorjaar met een scherpe spade; dit is zware arbeid vanwege het dichte wortelgestel.",
+    "sunLight": "vol-zon-halfschaduw",
+    "frostHardy": true,
+    "waterNeeds": "matig",
+    "waterNotes": "Verdraagt zowel vochtige als drogere grond, maar bloeit het beste op vochtige standplaatsen.",
+    "bloomMonths": [
+      7,
+      8,
+      9,
+      10
+    ],
+    "bloomColor": "paars-bruin, later goudgeel",
+    "soilType": "Vochtige, licht zure grond",
+    "fertilizeNotes": "Nauwelijks bemesting nodig; eventueel compost in het voorjaar.",
+    "toxicity": "niet-giftig",
+    "toxicityNotes": "Niet giftig voor mens of dier.",
+    "description": "Pijpenstrootje is een inheems siergras met transparante bloemstengels die als pilaren boven de pol uitsteken. Spectaculaire herfstkleur in goudgeel en oranje. Een architectonische plant voor moderne en natuurlijke tuinen.",
+    "aliases": [
+      "molinia"
+    ]
+  },
+  {
+    "id": "deschampsia-cespitosa",
+    "commonName": "Ruwe smele",
+    "latinName": "Deschampsia cespitosa",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      2,
+      3
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Knip in februari-maart het oude gras terug tot 10-15 cm boven de grond voordat de nieuwe groei begint. Kam met je handen of een hark het dode materiaal uit de pol. Ruwe smele is groenblijvend, dus knip niet te diep — laat het groene hart intact. Laat de pluimen in de winter staan: ze zijn bijzonder decoratief met rijp. Deel overvolle pollen elke 4-5 jaar in het voorjaar. Zaait zich uit; verwijder ongewenste zaailingen.",
+    "sunLight": "halfschaduw",
+    "frostHardy": true,
+    "waterNeeds": "matig",
+    "waterNotes": "Houdt van vochtige grond; verdraagt ook normalere omstandigheden.",
+    "bloomMonths": [
+      6,
+      7,
+      8
+    ],
+    "bloomColor": "goudgeel, zilvergroen",
+    "soilType": "Vochtige, humeuze grond",
+    "fertilizeNotes": "Nauwelijks bemesting nodig.",
+    "toxicity": "niet-giftig",
+    "toxicityNotes": "Niet giftig voor mens of dier.",
+    "description": "Ruwe smele is een elegant inheems siergras met een wolk van fijne, goudkleurige bloemaren boven een compacte pol donkergroen blad. Uitstekend voor schaduwrijke plekken waar weinig andere siergrassen groeien.",
+    "aliases": [
+      "smele",
+      "deschampsia"
+    ]
+  },
+  {
+    "id": "helenium-autumnale",
+    "commonName": "Zonnekruid",
+    "latinName": "Helenium autumnale",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      3,
+      5,
+      6,
+      11
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Pinch de toppen in mei-juni (tot circa half juni) om een compactere, rijker bloeiende plant te krijgen — dit is de zogenaamde 'Chelsea chop'. Knip na de bloei de uitgebloeide stengels terug. In het najaar of vroege voorjaar alle stengels terugknippen tot de grond. Deel de plant elke 2-3 jaar in het voorjaar: zonnekruid sterft vanuit het midden af en moet regelmatig gedeeld worden om vitaal te blijven. Plant de buitenste, jonge delen terug.",
+    "sunLight": "vol-zon",
+    "frostHardy": true,
+    "waterNeeds": "matig",
+    "waterNotes": "Houd de grond gelijkmatig vochtig; verdraagt geen langdurige droogte.",
+    "bloomMonths": [
+      7,
+      8,
+      9,
+      10
+    ],
+    "bloomColor": "geel, oranje, rood, bruin",
+    "soilType": "Vochtige, voedselrijke grond",
+    "fertilizeNotes": "Bemest in het voorjaar met compost of universele tuinmest.",
+    "toxicity": "niet-giftig",
+    "toxicityNotes": "Niet giftig, maar kan bij gevoelige personen huidirritatie veroorzaken.",
+    "description": "Zonnekruid is een onmisbare najaarsbloeier met warme kleuren van geel tot donkerrood. Bloeit van juli tot oktober en brengt kleur wanneer de zomer overgaat in de herfst. Uitstekende snijbloem en bijenplant.",
+    "aliases": [
+      "helenium"
+    ]
+  },
+  {
+    "id": "solidago-virgaurea",
+    "commonName": "Echte guldenroede",
+    "latinName": "Solidago virgaurea",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      3,
+      10,
+      11
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Knip na de bloei de uitgebloeide bloemstengels terug om woekering via uitzaai te beperken. In het najaar of vroege voorjaar alle stengels terugknippen tot de grond. De inheemse guldenroede is veel bescheidener dan de Amerikaanse soorten en woekert minder. Deel elke 4-5 jaar in het voorjaar. Laat de winterstengels staan voor insecten als je de verspreiding onder controle hebt.",
+    "sunLight": "vol-zon-halfschaduw",
+    "frostHardy": true,
+    "waterNeeds": "weinig",
+    "waterNotes": "Droogtetolerant; verdraagt arme, droge grond goed.",
+    "bloomMonths": [
+      7,
+      8,
+      9
+    ],
+    "bloomColor": "geel",
+    "soilType": "Normale tot droge, goed doorlatende grond",
+    "fertilizeNotes": "Niet bemesten; groeit prima op arme grond.",
+    "toxicity": "niet-giftig",
+    "toxicityNotes": "Niet giftig; wordt traditioneel als geneeskruid gebruikt.",
+    "description": "De echte guldenroede is de inheemse soort met sierlijke gele bloemtrossen. Veel bescheidener dan de Amerikaanse guldenroede en woekert niet. Waardevol voor bijen en vlinders in de late zomer.",
+    "aliases": [
+      "guldenroede"
+    ]
+  },
+  {
+    "id": "liatris-spicata",
+    "commonName": "Lampenpoetser",
+    "latinName": "Liatris spicata",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      3,
+      10,
+      11
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Knip na de bloei de uitgebloeide bloemaren terug of laat ze staan voor wintersilhouet. In het najaar of vroege voorjaar alle stengels terugknippen tot vlak boven de grond. Lampenpoetser bloeit bijzonder: van boven naar beneden (in tegenstelling tot de meeste planten). De knollen zijn gevoelig voor winternat; zorg voor goede drainage. Deel overvolle planten elke 4-5 jaar in het voorjaar door de knollen voorzichtig te scheiden.",
+    "sunLight": "vol-zon",
+    "frostHardy": true,
+    "waterNeeds": "matig",
+    "waterNotes": "Matig water; goede drainage is essentieel, vooral in de winter.",
+    "bloomMonths": [
+      7,
+      8,
+      9
+    ],
+    "bloomColor": "paars-roze, wit",
+    "soilType": "Goed doorlatende, matig vruchtbare grond",
+    "fertilizeNotes": "Licht bemesten met compost in het voorjaar.",
+    "toxicity": "niet-giftig",
+    "toxicityNotes": "Niet giftig voor mens of dier.",
+    "description": "Lampenpoetser is een opvallende vaste plant met kaarsrechte paars-roze bloemaren die van boven naar beneden opengaan. Een magneet voor vlinders en bijen. De knolvormige wortels maken de plant droogtebestendig.",
+    "aliases": [
+      "liatris",
+      "prairiebloem"
+    ]
+  },
+  {
+    "id": "aconitum-napellus",
+    "commonName": "Blauwe monnikskap",
+    "latinName": "Aconitum napellus",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      3,
+      10,
+      11
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Knip na de bloei de uitgebloeide bloemstengels terug tot het basale blad. In het najaar of vroege voorjaar alle afgestorven stengels tot de grond terugknippen. BELANGRIJK: draag altijd handschoenen bij het werken met monnikskap — alle delen zijn extreem giftig, ook bij huidcontact kunnen sommige mensen reageren. Deel overvolle planten elke 4-5 jaar in het najaar, met handschoenen. Hoge cultivars kunnen steun nodig hebben.",
+    "sunLight": "halfschaduw",
+    "frostHardy": true,
+    "waterNeeds": "matig",
+    "waterNotes": "Houd de grond gelijkmatig vochtig; verdraagt geen droogte.",
+    "bloomMonths": [
+      7,
+      8,
+      9
+    ],
+    "bloomColor": "diepblauw, paars",
+    "soilType": "Humusrijke, vochtige, goed doorlatende grond",
+    "fertilizeNotes": "Bemest in het voorjaar met compost.",
+    "toxicity": "zeer-giftig",
+    "toxicityNotes": "Extreem giftig — een van de giftigste planten in de Europese flora. Alle delen bevatten aconitine. Huidcontact kan al klachten geven. Draag altijd handschoenen. Houd kinderen en huisdieren op afstand.",
+    "description": "Blauwe monnikskap is een imposante vaste plant met helmvormige, diepblauwe bloemen op hoge stengels. Ondanks haar schoonheid is het een van de giftigste planten van Europa. Uitstekend voor halfschaduw en bosranden.",
+    "aliases": [
+      "monnikskap",
+      "wolfskruid",
+      "aconitum"
+    ]
+  },
+  {
+    "id": "waldsteinia-ternata",
+    "commonName": "Goudaardbei",
+    "latinName": "Waldsteinia ternata",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      3
+    ],
+    "pruneType": "geen",
+    "pruneNotes": "Goudaardbei is een groenblijvende bodembedekker die vrijwel geen snoei nodig heeft. Verwijder in het vroege voorjaar eventueel bruin of beschadigd blad. Beperk de uitbreiding door randen af te steken waar de plant niet gewenst is. De plant breidt zich uit via uitlopers. Verder volledig onderhoudsvrij. Deel overvolle matten als ze te dicht worden, maar dit is zelden nodig.",
+    "sunLight": "halfschaduw-schaduw",
+    "frostHardy": true,
+    "waterNeeds": "weinig",
+    "waterNotes": "Droogtetolerant eenmaal gevestigd; ideaal voor droge schaduw.",
+    "bloomMonths": [
+      4,
+      5
+    ],
+    "bloomColor": "geel",
+    "soilType": "Normale tuingrond, ook droge schaduw",
+    "fertilizeNotes": "Niet nodig; groeit ook prima zonder bemesting.",
+    "toxicity": "niet-giftig",
+    "toxicityNotes": "Niet giftig voor mens of dier.",
+    "description": "Goudaardbei is een robuuste, groenblijvende bodembedekker met aardbeiachtig blad en felgele bloemetjes in het voorjaar. Een van de beste planten voor droge schaduw onder bomen. Vrijwel onderhoudsvrij en wintergroen.",
+    "aliases": [
+      "goudaardbei",
+      "waldsteinia"
+    ]
+  },
+  {
+    "id": "epimedium-x-rubrum",
+    "commonName": "Elfenbloem",
+    "latinName": "Epimedium × rubrum",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      2,
+      3
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Knip in februari-maart, vlak vóór de bloei, al het oude blad af tot vlak boven de grond. Dit is belangrijk zodat de subtiele bloemen niet verborgen blijven onder het oude blad. Gebruik een schaar of scheer de hele mat kort. Het nieuwe blad en de bloemen verschijnen dan samen, vaak met een prachtige bronzen tint. Elfenbloem is een trage groeier in de eerste jaren maar wordt uiteindelijk een dichte bodembedekker. Deel de plant elke 5-6 jaar.",
+    "sunLight": "halfschaduw-schaduw",
+    "frostHardy": true,
+    "waterNeeds": "weinig",
+    "waterNotes": "Droogtetolerant eenmaal gevestigd; ideaal voor droge schaduw.",
+    "bloomMonths": [
+      4,
+      5
+    ],
+    "bloomColor": "rood-geel, roze",
+    "soilType": "Humusrijke, goed doorlatende grond",
+    "fertilizeNotes": "Mulch jaarlijks met bladcompost in de herfst.",
+    "toxicity": "niet-giftig",
+    "toxicityNotes": "Niet giftig voor mens of dier.",
+    "description": "Elfenbloem is een sierlijke bodembedekker met fijne, elfachtige bloempjes in het voorjaar en decoratief blad dat in de herfst prachtig verkleurt. Een van de beste planten voor droge schaduw. Groenblijvend tot halfgroenblijvend.",
+    "aliases": [
+      "elfenbloem",
+      "epimedium"
+    ]
+  },
+  {
+    "id": "geranium-phaeum",
+    "commonName": "Donkere ooievaarsbek",
+    "latinName": "Geranium phaeum",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      7,
+      8
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Knip na de bloei in juli alle bloemstengels en eventueel lelijk blad terug tot net boven de grond. De plant maakt dan fris nieuw blad aan. In het najaar sterft het blad af; ruim het op of laat het liggen. Donkere ooievaarsbek zaait zich rijkelijk uit — verwijder zaadhoofden vóór uitrijpen als je dit wilt beperken. Deel overvolle planten elke 4-5 jaar. Een van de beste vaste planten voor diepe schaduw.",
+    "sunLight": "halfschaduw-schaduw",
+    "frostHardy": true,
+    "waterNeeds": "matig",
+    "waterNotes": "Verdraagt droge schaduw goed eenmaal gevestigd.",
+    "bloomMonths": [
+      5,
+      6,
+      7
+    ],
+    "bloomColor": "donkerpaars, bijna zwart",
+    "soilType": "Normale tot humusrijke grond, ook droge schaduw",
+    "fertilizeNotes": "Een schep compost in het voorjaar is voldoende.",
+    "toxicity": "niet-giftig",
+    "toxicityNotes": "Niet giftig voor mens of dier.",
+    "description": "Donkere ooievaarsbek is een schaduwspecialist met ongewone, bijna zwarte bloemen. Bloeit in mei-juni en vormt aantrekkelijke pollen met gelobd blad dat soms decoratief gevlekt is. Verdraagt zelfs diepe, droge schaduw.",
+    "aliases": [
+      "donkere ooievaarsbek",
+      "mourning widow"
+    ]
+  },
+  {
+    "id": "anemone-sylvestris",
+    "commonName": "Grote bosannemoon",
+    "latinName": "Anemone sylvestris",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      7,
+      10
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Knip na de bloei de uitgebloeide stengels terug. De wollige zaadpluisjes zijn decoratief, dus je kunt ze ook laten staan tot ze uitgerijpt zijn. In het najaar het afgestorven blad opruimen. Grote bosannemoon breidt zich uit via worteluitlopers en kan in los, zandig grond flink woekeren; beperk waar nodig door uitlopers af te steken. Deel overvolle planten in het najaar. Laat de plant bij voorkeur rustig uitbreiden op een half-wilde plek.",
+    "sunLight": "halfschaduw",
+    "frostHardy": true,
+    "waterNeeds": "matig",
+    "waterNotes": "Matig water; verdraagt lichte droogte.",
+    "bloomMonths": [
+      4,
+      5,
+      6
+    ],
+    "bloomColor": "wit",
+    "soilType": "Goed doorlatende, kalkrijke grond",
+    "fertilizeNotes": "Licht bemesten met compost in het voorjaar.",
+    "toxicity": "licht-giftig",
+    "toxicityNotes": "Alle delen zijn licht giftig bij inname; het sap kan huidirritatie veroorzaken.",
+    "description": "De grote bosannemoon is een lieflijke wildeplant met grote, zuiver witte bloemen die licht knikken. Bloeit in het late voorjaar en vormt decoratieve wollige zaadpluisjes. Verspreidt zich langzaam tot een charmante groep.",
+    "aliases": [
+      "bosannemoon",
+      "wilde annemoon"
+    ]
+  },
+  {
+    "id": "symphytum-officinale",
+    "commonName": "Smeerwortel",
+    "latinName": "Symphytum officinale",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      7,
+      8
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Knip na de eerste bloei in juli alle stengels terug tot de grond; de plant maakt dan vers blad en bloeit vaak licht na. De bladeren zijn uitstekend als compostactivator of als mulchmateriaal. Smeerwortel is zeer moeilijk te verwijderen vanwege de diepe penwortel — plant alleen waar je hem permanent wilt. Elke wortelrest kan uitgroeien tot een nieuwe plant. Verdraagt stevige terugsnit en komt altijd terug.",
+    "sunLight": "vol-zon-halfschaduw",
+    "frostHardy": true,
+    "waterNeeds": "matig",
+    "waterNotes": "Houdt van vochtige grond maar verdraagt ook normalere omstandigheden.",
+    "bloomMonths": [
+      5,
+      6,
+      7
+    ],
+    "bloomColor": "paars, roze, crèmewit",
+    "soilType": "Vochtige, voedselrijke grond",
+    "fertilizeNotes": "Niet nodig; smeerwortel is zelf een uitstekende bodemverbeteraar.",
+    "toxicity": "licht-giftig",
+    "toxicityNotes": "Bevat pyrrolizidine-alkaloïden; niet eten. Alleen uitwendig gebruik in de kruidengeneeskunde.",
+    "description": "Smeerwortel is een krachtige inheemse plant met hangende klokvormige bloemen en groot, ruw blad. Traditioneel gebruikt als wondhelend kruid (uitwendig). De bladeren zijn waardevol als compostversneller en mulch.",
+    "aliases": [
+      "comfrey",
+      "wallwurz"
+    ]
+  },
+  {
+    "id": "tanacetum-vulgare",
+    "commonName": "Boerenwormkruid",
+    "latinName": "Tanacetum vulgare",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      3,
+      10
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Knip na de bloei de uitgebloeide stengels terug om uitzaai te beperken. In het najaar of vroege voorjaar alle stengels tot de grond terugknippen. Boerenwormkruid breidt zich flink uit via worteluitlopers; steek jaarlijks de randen af. Plant bij voorkeur met een wortelscherm of op een plek waar woekering niet erg is. De gele knopbloemetjes zijn decoratief gedroogd. Draag handschoenen bij gevoelige huid, want het sap kan irriteren.",
+    "sunLight": "vol-zon",
+    "frostHardy": true,
+    "waterNeeds": "weinig",
+    "waterNotes": "Droogtetolerant; verdraagt arme, droge grond.",
+    "bloomMonths": [
+      7,
+      8,
+      9
+    ],
+    "bloomColor": "geel",
+    "soilType": "Normale tot droge, goed doorlatende grond",
+    "fertilizeNotes": "Niet bemesten; groeit al krachtig genoeg.",
+    "toxicity": "giftig",
+    "toxicityNotes": "Giftig bij inname; bevat thujon. Niet eten. Kan huidirritatie veroorzaken.",
+    "description": "Boerenwormkruid is een stoere inheemse plant met platte schermen van knoopvormige gele bloemen en sterk aromatisch, varenachtig blad. Traditioneel gebruikt om insecten te weren. Past in wilde tuinen en bij boerderijen.",
+    "aliases": [
+      "wormkruid",
+      "reinvaren"
+    ]
+  },
+  {
+    "id": "centaurea-jacea",
+    "commonName": "Knoopkruid",
+    "latinName": "Centaurea jacea",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      3,
+      10
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Knip na de eerste bloei de uitgebloeide stengels terug om een nabloei te stimuleren. In het najaar of vroege voorjaar alle stengels tot de grond terugknippen. Knoopkruid zaait zich matig uit; laat zaadhoofden staan als je verspreiding wilt. De plant is kortlevend maar houdt zichzelf goed in stand. Verder vrijwel onderhoudsvrij. Een ideale plant voor bloemenweiden die pas laat in het seizoen gemaaid worden.",
+    "sunLight": "vol-zon",
+    "frostHardy": true,
+    "waterNeeds": "weinig",
+    "waterNotes": "Droogtetolerant; verdraagt arme, droge grond uitstekend.",
+    "bloomMonths": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "bloomColor": "roze-paars",
+    "soilType": "Droge tot normale, goed doorlatende grond",
+    "fertilizeNotes": "Niet bemesten; houdt van arme grond.",
+    "toxicity": "niet-giftig",
+    "toxicityNotes": "Niet giftig voor mens of dier.",
+    "description": "Knoopkruid is een inheemse weideplant met roze-paarse korenbloem-achtige bloemen. Zeer waardevol voor bijen, vlinders en andere insecten. Past perfect in bloemenweiden, natuurtuinen en droge borders.",
+    "aliases": [
+      "gewoon knoopkruid"
+    ]
+  },
+  {
+    "id": "salvia-pratensis",
+    "commonName": "Veldsalie",
+    "latinName": "Salvia pratensis",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      7,
+      8
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Knip na de eerste bloei in juli de uitgebloeide bloemstengels terug tot het basale bladrozet; dit stimuleert een stevige nabloei in augustus-september. In het najaar het afgestorven blad opruimen. Veldsalie is een inheemse plant die het best gedijt op arme, kalkhoudende grond; te rijke grond maakt de plant slap. Deel overvolle planten elke 4-5 jaar in het voorjaar. De plant zaait zich bescheiden uit.",
+    "sunLight": "vol-zon",
+    "frostHardy": true,
+    "waterNeeds": "weinig",
+    "waterNotes": "Droogtetolerant; verdraagt hitte en droogte goed.",
+    "bloomMonths": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "bloomColor": "blauw-violet",
+    "soilType": "Droge, kalkhoudende, goed doorlatende grond",
+    "fertilizeNotes": "Niet bemesten; te voedselrijke grond maakt de plant zwak.",
+    "toxicity": "niet-giftig",
+    "toxicityNotes": "Niet giftig; de bloemen zijn eetbaar.",
+    "description": "Veldsalie is een prachtige inheemse plant met hoge aren vol blauw-violette bloemen. Een van de beste bijenplanten voor droge, zonnige standplaatsen. Bloeit bij terugknippen twee keer per seizoen.",
+    "aliases": [
+      "veldsalie",
+      "weidesalie"
+    ]
+  },
+  {
+    "id": "origanum-laevigatum",
+    "commonName": "Sierlijke oregano",
+    "latinName": "Origanum laevigatum",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      3
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Laat de stengels tot het voorjaar staan — ze zijn decoratief in de winter en bieden beschutting aan insecten. Knip in maart alle stengels terug tot vlak boven de grond, net als de nieuwe scheuten verschijnen. Sierlijke oregano is een compacte plant die niet snel woekert. Deel elke 4-5 jaar in het voorjaar. Op natte wintergrond kan de plant uitvallen; zorg voor goede drainage. De plant trekt enorm veel vlinders aan.",
+    "sunLight": "vol-zon",
+    "frostHardy": true,
+    "waterNeeds": "weinig",
+    "waterNotes": "Droogtetolerant; natte wintergrond is de grootste bedreiging.",
+    "bloomMonths": [
+      7,
+      8,
+      9,
+      10
+    ],
+    "bloomColor": "paars-roze",
+    "soilType": "Droge, goed doorlatende, arme grond",
+    "fertilizeNotes": "Niet bemesten; houdt van arme grond.",
+    "toxicity": "niet-giftig",
+    "toxicityNotes": "Niet giftig; aromatisch kruid.",
+    "description": "Sierlijke oregano is een compacte vaste plant met wolken van paars-roze bloemen die vlinders magnetisch aantrekken. De donkere schutblaadjes geven extra kleur. Perfect voor zonnige borders, grindtuinen en rotstuinen.",
+    "aliases": [
+      "sieroregano",
+      "herrenhausen"
+    ]
+  },
+  {
+    "id": "veronicastrum-virginicum",
+    "commonName": "Ereprijs (kandelaar)",
+    "latinName": "Veronicastrum virginicum",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      3,
+      11
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Laat de stengels tot het voorjaar staan — de kandelaarvorming van de zaadstanden is spectaculair decoratief in de winter. Knip in maart alle stengels terug tot vlak boven de grond. Je kunt in mei de toppen pinchen voor een compactere, later bloeiende plant. Veronicastrum is een imposante plant (tot 180 cm) die zelden steun nodig heeft. Deel elke 5-6 jaar in het voorjaar. De plant breidt zich langzaam en bescheiden uit.",
+    "sunLight": "vol-zon-halfschaduw",
+    "frostHardy": true,
+    "waterNeeds": "matig",
+    "waterNotes": "Houd de grond gelijkmatig vochtig; verdraagt geen langdurige droogte.",
+    "bloomMonths": [
+      7,
+      8,
+      9
+    ],
+    "bloomColor": "wit, lila, roze",
+    "soilType": "Vochtige, humusrijke grond",
+    "fertilizeNotes": "Bemest licht met compost in het voorjaar.",
+    "toxicity": "niet-giftig",
+    "toxicityNotes": "Niet giftig voor mens of dier.",
+    "description": "Veronicastrum is een architectonische plant met kandelaarachtige, slanke bloemtoortsen die tot 180 cm hoog worden. De wintersilhouetten zijn even spectaculair als de bloei. Een must-have voor prairieborders en moderne tuinen.",
+    "aliases": [
+      "veronicastrum",
+      "kandelaar-ereprijs"
+    ]
+  },
+  {
+    "id": "euphorbia-polychroma",
+    "commonName": "Wolfsmelk",
+    "latinName": "Euphorbia polychroma",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      7,
+      8
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Knip na de bloei in juli de uitgebloeide stengels met een derde terug voor een compacte plant en eventuele nabloei. In het najaar sterft het bovengrondse deel af; knip alles terug tot de grond. BELANGRIJK: draag altijd handschoenen — het melkachtige sap is irriterend voor de huid en ogen. Spoel gereedschap na het snoeien af. De plant vormt een nette, bolvormige pol en woekert niet. Deel elke 5-6 jaar in het najaar als de pol te groot wordt.",
+    "sunLight": "vol-zon",
+    "frostHardy": true,
+    "waterNeeds": "weinig",
+    "waterNotes": "Droogtetolerant; natte voeten zijn funest.",
+    "bloomMonths": [
+      4,
+      5,
+      6
+    ],
+    "bloomColor": "geel (schutbladeren)",
+    "soilType": "Goed doorlatende, niet te rijke grond",
+    "fertilizeNotes": "Niet bemesten; groeit beter op arme grond.",
+    "toxicity": "giftig",
+    "toxicityNotes": "Het melksap is irriterend voor huid en ogen en giftig bij inname. Draag handschoenen bij het snoeien.",
+    "description": "Wolfsmelk is een opvallende voorjaarsbloeier met een perfecte bolvorm en felle zwavelgele schutbladeren. Prachtige herfstkleur in oranje en rood. Onverslijtbaar en droogtetolerant.",
+    "aliases": [
+      "wolfsmelk",
+      "cushion spurge"
+    ]
+  },
+  {
+    "id": "inula-helenium",
+    "commonName": "Alant",
+    "latinName": "Inula helenium",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      3,
+      10,
+      11
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Knip na de bloei de uitgebloeide bloemstengels terug. In het najaar of vroege voorjaar alle stengels terugknippen tot de grond. Alant wordt zeer fors (tot 200 cm) en kan steun nodig hebben op winderige plekken. Pinch de toppen in mei voor een compactere plant. De plant breidt zich langzaam uit via wortelstokken; steek uitlopers af als de plant te groot wordt. Deel elke 4-5 jaar in het voorjaar.",
+    "sunLight": "vol-zon-halfschaduw",
+    "frostHardy": true,
+    "waterNeeds": "matig",
+    "waterNotes": "Houdt van vochtige grond; verdraagt ook normalere omstandigheden.",
+    "bloomMonths": [
+      7,
+      8
+    ],
+    "bloomColor": "geel",
+    "soilType": "Vochtige, voedselrijke grond",
+    "fertilizeNotes": "Bemest in het voorjaar met compost.",
+    "toxicity": "niet-giftig",
+    "toxicityNotes": "Niet giftig; de wortel wordt traditioneel als geneeskruid gebruikt.",
+    "description": "Alant is een imposante vaste plant met grote, zonnebloemachtige gele bloemen en enorme bladeren. De aromatische wortel werd eeuwenlang als geneeskruid gebruikt. Een statement-plant voor de achtergrond van borders.",
+    "aliases": [
+      "echte alant",
+      "elecampane"
+    ]
+  },
+  {
+    "id": "cirsium-rivulare",
+    "commonName": "Geveerde distel",
+    "latinName": "Cirsium rivulare",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      3,
+      8,
+      9
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Knip na de bloei de uitgebloeide bloemhoofden terug om nabloei te stimuleren en ongewenste uitzaai te voorkomen. In het najaar of vroege voorjaar alle stengels terugknippen tot de grond. De cultivar 'Atropurpureum' is de populairste tuinvorm. Anders dan wilde distels woekert deze soort niet agressief, maar zaait zich wel uit. Verwijder zaailingen als ongewenst. Deel de plant elke 4-5 jaar in het voorjaar.",
+    "sunLight": "vol-zon-halfschaduw",
+    "frostHardy": true,
+    "waterNeeds": "matig",
+    "waterNotes": "Houdt van vochtige grond; verdraagt ook normalere omstandigheden.",
+    "bloomMonths": [
+      6,
+      7,
+      8
+    ],
+    "bloomColor": "donkerpaars, karmijn",
+    "soilType": "Vochtige, voedselrijke grond",
+    "fertilizeNotes": "Licht bemesten met compost in het voorjaar.",
+    "toxicity": "niet-giftig",
+    "toxicityNotes": "Niet giftig voor mens of dier.",
+    "description": "Geveerde distel 'Atropurpureum' is een verfijnde tuindistel met karmijnrode bloemhoofden op slanke stengels. Geen stekels op de stengels, dus tuinvriendelijk. Prachtig in prairiebeplantingen en natuurlijke borders.",
+    "aliases": [
+      "beekdistel",
+      "cirsium atropurpureum"
+    ]
+  },
+  {
+    "id": "actaea-simplex",
+    "commonName": "Christoffelkruid",
+    "latinName": "Actaea simplex",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      3,
+      11
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Knip in het najaar of vroege voorjaar alle afgestorven stengels terug tot de grond. De late bloei (september-oktober) maakt dat je het blad lang kunt laten staan. Christoffelkruid is een langzame groeier die niet gestoord wil worden; vermijd onnodig verplanten. Deel alleen als de plant te groot wordt, en doe dit in het vroege voorjaar. Donkerbladige cultivars (zoals 'Brunette') hebben meer zon nodig voor de beste bladkleur.",
+    "sunLight": "halfschaduw",
+    "frostHardy": true,
+    "waterNeeds": "matig",
+    "waterNotes": "Houd de grond gelijkmatig vochtig; verdraagt geen droogte.",
+    "bloomMonths": [
+      9,
+      10
+    ],
+    "bloomColor": "wit, crèmewit",
+    "soilType": "Humusrijke, vochtige, goed doorlatende grond",
+    "fertilizeNotes": "Mulch jaarlijks met bladcompost in de herfst.",
+    "toxicity": "giftig",
+    "toxicityNotes": "Alle delen zijn giftig bij inname; de bessen zijn het meest toxisch.",
+    "description": "Christoffelkruid is een statige schaduwplant met lange, geurende bloemkaarsen en sierlijk ingesneden blad. Donkerbladige cultivars zijn bijzonder gewild. Een van de mooiste planten voor late herfstbloei in de schaduw.",
+    "aliases": [
+      "zilverkaars",
+      "cimicifuga"
+    ]
+  },
+  {
+    "id": "rodgersia-aesculifolia",
+    "commonName": "Rodgersia",
+    "latinName": "Rodgersia aesculifolia",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      3,
+      11
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Knip in het najaar of vroege voorjaar alle afgestorven stengels en blad terug tot de grond. De imposante bladeren sterven af na de eerste nachtvorst. Verwijder eventueel uitgebloeide bloemstengels als je ze lelijk vindt, maar de zaadhoofden zijn ook decoratief. Rodgersia groeit langzaam en stoort niet; laat de plant bij voorkeur ongestoord. Deel alleen elke 6-8 jaar als de pol te groot wordt. Bescherm jong blad in het voorjaar tegen late vorst.",
+    "sunLight": "halfschaduw",
+    "frostHardy": true,
+    "waterNeeds": "veel",
+    "waterNotes": "Vereist constant vochtige grond; ideaal langs vijverranden.",
+    "bloomMonths": [
+      6,
+      7
+    ],
+    "bloomColor": "crèmewit, roze",
+    "soilType": "Vochtige tot natte, humusrijke grond",
+    "fertilizeNotes": "Mulch jaarlijks met bladcompost of compost.",
+    "toxicity": "niet-giftig",
+    "toxicityNotes": "Niet giftig voor mens of dier.",
+    "description": "Rodgersia is een imposante bladplant met grote, handvormige bladeren die doen denken aan die van de kastanje. De pluimvormige bloemschermen verschijnen in de zomer. Een architectonische plant voor vochtige, schaduwrijke tuinen.",
+    "aliases": [
+      "kastanjeblad-rodgersia"
+    ]
+  },
+  {
+    "id": "ligularia-dentata",
+    "commonName": "Kruiskruid",
+    "latinName": "Ligularia dentata",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      3,
+      10,
+      11
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Knip na de bloei de uitgebloeide bloemstengels terug. In het najaar of vroege voorjaar alle afgestorven stengels en blad terugknippen tot de grond. Het grote blad heeft de neiging om op warme middagen slap te hangen, zelfs in vochtige grond — dit is normaal en herstelt zich 's avonds. Bescherm tegen slakken, vooral in het voorjaar bij het uitlopen. Deel overvolle planten elke 5-6 jaar in het voorjaar.",
+    "sunLight": "halfschaduw",
+    "frostHardy": true,
+    "waterNeeds": "veel",
+    "waterNotes": "Heeft constant vochtige grond nodig; op droge standplaatsen gaat het blad hangen.",
+    "bloomMonths": [
+      7,
+      8,
+      9
+    ],
+    "bloomColor": "oranje-geel",
+    "soilType": "Vochtige tot natte, humusrijke grond",
+    "fertilizeNotes": "Bemest in het voorjaar met compost.",
+    "toxicity": "niet-giftig",
+    "toxicityNotes": "Niet giftig voor mens of dier.",
+    "description": "Kruiskruid is een opvallende bladplant met grote, ronde bladeren (bij 'Othello' donkerpaars) en oranje-gele madeliefachtige bloemen. Spectaculair langs vijverranden en in vochtige borders. Slakken zijn helaas dol op het blad.",
+    "aliases": [
+      "ligularia",
+      "tongkruiskruid"
+    ]
+  },
+  {
+    "id": "kirengeshoma-palmata",
+    "commonName": "Japans wasbloem",
+    "latinName": "Kirengeshoma palmata",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      3,
+      11
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Knip in het najaar of vroege voorjaar alle afgestorven stengels terug tot de grond. De plant heeft een laat uitloopmoment (april-mei), dus maak je geen zorgen als er in maart nog niets te zien is. Kirengeshoma is een trage groeier die niet gestoord wil worden; vermijd onnodig verplanten of delen. Deel alleen elke 6-8 jaar als de pol te groot wordt. Bescherm tegen slakken in het voorjaar bij het uitlopen.",
+    "sunLight": "halfschaduw-schaduw",
+    "frostHardy": true,
+    "waterNeeds": "matig",
+    "waterNotes": "Houd de grond gelijkmatig vochtig; verdraagt geen droogte.",
+    "bloomMonths": [
+      8,
+      9,
+      10
+    ],
+    "bloomColor": "zachtgeel",
+    "soilType": "Humusrijke, vochtige, licht zure grond",
+    "fertilizeNotes": "Mulch met bladcompost in de herfst; verder niet bemesten.",
+    "toxicity": "niet-giftig",
+    "toxicityNotes": "Niet giftig voor mens of dier.",
+    "description": "Japans wasbloem is een verfijnde schaduwplant met wasachtige, zachtgele klokvormige bloemen en decoratief, esdoornachtig blad. Bloeit laat in het seizoen en is een juweeltje voor de liefhebber. Zeldzaam in tuinen maar ongeëvenaard elegant.",
+    "aliases": [
+      "kirengeshoma",
+      "wasbloem"
+    ]
+  },
+  {
+    "id": "tricyrtis-hirta",
+    "commonName": "Paddenlelie",
+    "latinName": "Tricyrtis hirta",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      3,
+      11
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Knip in het najaar of vroege voorjaar alle afgestorven stengels terug tot de grond. De late bloei (september-oktober) betekent dat het blad lang groen en decoratief blijft. Paddenlelie loopt laat uit in het voorjaar; heb geduld. Deel overvolle planten elke 4-5 jaar in het voorjaar. Bescherm tegen slakken bij het uitlopen. Mulch met bladcompost in de herfst als winterbescherming, vooral in koudere regio's.",
+    "sunLight": "halfschaduw-schaduw",
+    "frostHardy": true,
+    "waterNeeds": "matig",
+    "waterNotes": "Houd de grond gelijkmatig vochtig; verdraagt geen droogte.",
+    "bloomMonths": [
+      9,
+      10
+    ],
+    "bloomColor": "wit met paarse vlekken",
+    "soilType": "Humusrijke, vochtige, goed doorlatende grond",
+    "fertilizeNotes": "Mulch met bladcompost; eventueel licht bemesten in het voorjaar.",
+    "toxicity": "niet-giftig",
+    "toxicityNotes": "Niet giftig voor mens of dier.",
+    "description": "Paddenlelie is een exotisch ogende schaduwplant met orchideeachtige bloemen bezaaid met paarse stippen. Bloeit laat in de herfst wanneer weinig andere schaduwplanten nog kleur geven. Een verrassende ontdekking voor elke tuinliefhebber.",
+    "aliases": [
+      "paddenlelie",
+      "toadlily"
+    ]
+  },
+  {
+    "id": "geum-rivale",
+    "commonName": "Knikkend nagelkruid",
+    "latinName": "Geum rivale",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      7,
+      8,
+      10
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Knip na de bloei de uitgebloeide bloemstengels terug tot het basale blad om nabloei te stimuleren. De pluizige zaadhoofden zijn echter ook decoratief, dus je kunt ze laten staan. In het najaar het afgestorven blad opruimen. De plant blijft in milde winters groenblijvend. Deel overvolle planten elke 3-4 jaar in het najaar of voorjaar. Knikkend nagelkruid is een bescheiden, niet-woekerende plant die goed combineert met andere schaduwplanten.",
+    "sunLight": "halfschaduw",
+    "frostHardy": true,
+    "waterNeeds": "matig",
+    "waterNotes": "Houdt van vochtige grond; verdraagt geen langdurige droogte.",
+    "bloomMonths": [
+      5,
+      6,
+      7
+    ],
+    "bloomColor": "oranje-roze, abrikoos",
+    "soilType": "Vochtige, humusrijke grond",
+    "fertilizeNotes": "Een schep compost in het voorjaar volstaat.",
+    "toxicity": "niet-giftig",
+    "toxicityNotes": "Niet giftig voor mens of dier.",
+    "description": "Knikkend nagelkruid is een sierlijke inheemse plant met charmante, naar beneden hangende bloemen in warme oranje-roze tinten. Prachtig in combinatie met vergeet-mij-nietjes en varens. Past in vochtige borders en langs beekjes.",
+    "aliases": [
+      "nagelkruid",
+      "waternagelkruid"
+    ]
+  },
+  {
+    "id": "agastache-foeniculum",
+    "commonName": "Dropplant",
+    "latinName": "Agastache foeniculum",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      3,
+      10
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Laat de stengels bij voorkeur tot het voorjaar staan — ze bieden wintersilhouet en de zaadhoofden voeden vogels. Knip in maart alle stengels terug tot vlak boven de grond. Dropplant is kortlevend (2-4 jaar) maar zaait zich goed uit; laat zaadhoofden staan voor continuïteit. Op natte wintergrond valt de plant snel uit; zorg voor uitstekende drainage. Mulch in de herfst met grind of bladeren als winterbescherming.",
+    "sunLight": "vol-zon",
+    "frostHardy": true,
+    "waterNeeds": "weinig",
+    "waterNotes": "Droogtetolerant; natte wintergrond is de grootste vijand.",
+    "bloomMonths": [
+      7,
+      8,
+      9,
+      10
+    ],
+    "bloomColor": "blauw-paars",
+    "soilType": "Goed doorlatende, niet te rijke grond",
+    "fertilizeNotes": "Niet bemesten; houdt van arme tot matig voedselrijke grond.",
+    "toxicity": "niet-giftig",
+    "toxicityNotes": "Niet giftig; de bladeren zijn eetbaar en smaken naar anijs/drop.",
+    "description": "Dropplant is een aromatische vaste plant met lange blauw-paarse bloemaren die naar drop/anijs geuren. Een absolute vlinder- en bijenmagneet. De bladeren zijn heerlijk in thee. Perfect voor zonnige, droge borders.",
+    "aliases": [
+      "anijshyssop",
+      "agastache"
+    ]
+  },
+  {
+    "id": "acanthus-mollis",
+    "commonName": "Acanthus",
+    "latinName": "Acanthus mollis",
+    "category": "tuinplant",
+    "locationHint": [
+      "buiten"
+    ],
+    "pruneMonths": [
+      3,
+      10
+    ],
+    "pruneType": "onderhoud",
+    "pruneNotes": "Knip na de bloei de uitgebloeide bloemstengels af aan de basis. De zaadstanden zijn decoratief en kunnen ook blijven staan. In het najaar of vroege voorjaar beschadigd of vergeeld blad verwijderen. In milde winters blijft acanthus groenblijvend. Acanthus heeft diepe wortels en is bijna onmogelijk te verwijderen als hij eenmaal gevestigd is — plant alleen waar je hem permanent wilt. Elke wortelrest vormt een nieuwe plant.",
+    "sunLight": "vol-zon-halfschaduw",
+    "frostHardy": true,
+    "waterNeeds": "weinig",
+    "waterNotes": "Droogtetolerant eenmaal gevestigd; houdt van warme, beschutte plekken.",
+    "bloomMonths": [
+      6,
+      7,
+      8
+    ],
+    "bloomColor": "wit met paarse schutbladen",
+    "soilType": "Goed doorlatende, niet te rijke grond",
+    "fertilizeNotes": "Niet bemesten noodzakelijk.",
+    "toxicity": "niet-giftig",
+    "toxicityNotes": "Niet giftig voor mens of dier.",
+    "description": "Acanthus is een architectonische plant met spectaculaire, metershoge bloemstengels en groot, glanzend, diep ingesneden blad. Het bladmotief inspireerde de Korinthische zuilen in de Griekse architectuur. Indrukwekkend in elke tuin.",
+    "aliases": [
+      "berenklauw",
+      "acanthus"
     ]
   }
 ]

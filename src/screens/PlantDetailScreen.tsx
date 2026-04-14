@@ -219,6 +219,10 @@ export function PlantDetailScreen() {
     };
     if (editPhoto !== undefined) {
       updates.photo = editPhoto ?? undefined;
+      // Eigen foto uploaden → heroImageUrl wissen zodat eigen foto voorrang krijgt
+      if (editPhoto) {
+        updates.heroImageUrl = undefined;
+      }
     }
     await db.plants.update(plant.id, updates);
     setEditing(false);
