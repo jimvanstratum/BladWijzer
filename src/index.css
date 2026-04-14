@@ -67,13 +67,16 @@
     overflow: hidden;
   }
 
-  /* App-shell: vult het volledige scherm via inset:0.
-     Geen height nodig — top:0 + bottom:0 bepaalt de hoogte.
-     Op iOS PWA met viewport-fit=cover dekt dit het hele scherm
-     inclusief de home-indicator zone. */
+  /* APP SHELL — position:fixed maar NIET bottom:0 (iOS knipt dat af).
+     Gebruikt height:var(--app-height) zodat de app altijd de volledige
+     viewport vult. --app-height wordt via JS gezet op visualViewport.height.
+     #screens en BottomNav zijn flex-children, geen position:fixed op de nav. */
   .app-shell {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--app-height, 100vh);
     display: flex;
     flex-direction: column;
     padding-top: env(safe-area-inset-top, 0px);

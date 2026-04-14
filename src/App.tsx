@@ -16,6 +16,22 @@ export default function App() {
       document.documentElement.setAttribute('data-theme', stored);
     }
 
+    // ── Vocado-patroon: meet viewport hoogte ──
+    // visualViewport.height geeft op iOS PWA standalone de juiste
+    // hoogte (tot y=793), terwijl CSS 100vh/100dvh soms afwijkt.
+    // requestAnimationFrame + setTimeout(300) vangt iOS timing-quirks.
+    function setH() {
+      const h = window.visualViewport
+        ? window.visualViewport.height
+        : window.innerHeight;
+      document.documentElement.style.setProperty('--app-height', `${h}px`);
+    }
+    setH();
+    requestAnimationFrame(setH);
+    setTimeout(setH, 300);
+    window.visualViewport?.addEventListener('resize', setH);
+    window.addEventListener('resize', setH);
+
     // ── Meet safe-area-inset-bottom via DOM-element ──
     // env(safe-area-inset-bottom) werkt niet altijd direct in CSS
     // op iOS PWA standalone. We meten het via een verborgen element.
@@ -26,12 +42,17 @@ export default function App() {
     const sab = parseInt(getComputedStyle(probe).height) || 0;
     document.body.removeChild(probe);
     document.documentElement.style.setProperty('--sab', `${sab}px`);
+
+    return () => {
+      window.visualViewport?.removeEventListener('resize', setH);
+      window.removeEventListener('resize', setH);
+    };
   }, []);
 
   return (
     <>
-      {/* App-shell: position:fixed inset:0 vult het hele scherm
-          inclusief safe-area zones (met viewport-fit=cover). */}
+      {/* Vocado-patroon: position:fixed top/left/right (NIET bottom:0!)
+          + height via JS-gemeten --app-height. Nav is flex-child. */}
       <div className="app-shell">
         <div className="flex min-h-0 flex-1 overflow-hidden">
           <SideNav />
