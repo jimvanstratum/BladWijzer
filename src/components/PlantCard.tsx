@@ -40,7 +40,7 @@ export function PlantCard({ plant }: Props) {
 
   const entry = getCatalogEntry(plant.catalogId);
   const status = pruneStatus(entry);
-  const imgSrc = photoUrl ?? plant.heroImageUrl ?? wikiThumb;
+  const imgSrc = plant.heroImageUrl ?? photoUrl ?? wikiThumb;
 
   return (
     <Link

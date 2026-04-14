@@ -166,7 +166,8 @@ export function PlantDetailScreen() {
       .finally(() => setLoadingImages(false));
   }, [plant?.latinName]);
 
-  const heroSrc = photoUrl ?? plant?.heroImageUrl ?? refImages[0]?.thumbUrl ?? null;
+  // heroImageUrl heeft voorrang als die expliciet is ingesteld
+  const heroSrc = plant?.heroImageUrl ?? photoUrl ?? refImages[0]?.thumbUrl ?? null;
 
   // Unified image list voor lightbox
   const lightboxImages = useMemo<LightboxImage[]>(() => {
@@ -466,7 +467,7 @@ export function PlantDetailScreen() {
             <ul className="grid grid-cols-2 gap-2">
               {refImages.map((img, i) => {
                 const lbIndex = photoUrl ? i + 1 : i;
-                const isHero = !photoUrl && plant.heroImageUrl === img.thumbUrl;
+                const isHero = plant.heroImageUrl === img.thumbUrl;
                 return (
                   <li key={img.title} className="relative aspect-square overflow-hidden rounded-md bg-muted">
                     <button
