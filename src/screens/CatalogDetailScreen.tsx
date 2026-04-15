@@ -144,13 +144,14 @@ export function CatalogDetailScreen() {
         ) : (
           <div className="aspect-[16/9] w-full bg-muted" />
         )}
-        <Link
-          to="/catalog"
+        <button
+          type="button"
+          onClick={() => navigate(-1)}
           className="absolute left-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-bg/80 text-fg backdrop-blur-sm shadow-sm"
-          aria-label="Terug naar catalogus"
+          aria-label="Terug"
         >
           <ArrowLeft size={18} />
-        </Link>
+        </button>
       </div>
 
       {/* Titel */}
