@@ -14,6 +14,21 @@ import { cn } from '@/lib/utils';
 
 type Phase = 'capture' | 'loading' | 'results' | 'error';
 
+/**
+ * Module-level cache zodat scan-resultaten een unmount overleven.
+ * Nodig omdat React Router de ScanScreen unmount zodra je naar
+ * /catalog/:id navigeert; zonder cache zie je bij terugkomen weer
+ * het lege capture-scherm.
+ */
+interface ScanCache {
+  phase: Phase;
+  preview: string | null;
+  photoFile: File | null;
+  results: PlantNetResult[];
+  error: string | null;
+}
+let scanCache: ScanCache | null = null;
+
 /** Try to find a matching catalog entry by Latin name */
 function findCatalogMatch(latinName: string): CatalogEntry | undefined {
   const lower = latinName.toLowerCase();
@@ -29,12 +44,28 @@ export function ScanScreen() {
   const navigate = useNavigate();
   const fileRef = useRef<HTMLInputElement>(null);
 
-  const [phase, setPhase] = useState<Phase>('capture');
-  const [preview, setPreview] = useState<string | null>(null);
-  const [photoFile, setPhotoFile] = useState<File | null>(null);
-  const [results, setResults] = useState<PlantNetResult[]>([]);
-  const [error, setError] = useState<string | null>(null);
+  const [phase, setPhaseState] = useState<Phase>(() => scanCache?.phase ?? 'capture');
+  const [preview, setPreviewState] = useState<string | null>(() => scanCache?.preview ?? null);
+  const [photoFile, setPhotoFileState] = useState<File | null>(() => scanCache?.photoFile ?? null);
+  const [results, setResultsState] = useState<PlantNetResult[]>(() => scanCache?.results ?? []);
+  const [error, setErrorState] = useState<string | null>(() => scanCache?.error ?? null);
   const [saving, setSaving] = useState<string | null>(null); // id of result being saved
+
+  // Wrappers die de module-cache bijhouden, zodat state een unmount overleeft.
+  const writeCache = (patch: Partial<ScanCache>) => {
+    scanCache = {
+      phase: patch.phase ?? scanCache?.phase ?? 'capture',
+      preview: patch.preview !== undefined ? patch.preview : scanCache?.preview ?? null,
+      photoFile: patch.photoFile !== undefined ? patch.photoFile : scanCache?.photoFile ?? null,
+      results: patch.results ?? scanCache?.results ?? [],
+      error: patch.error !== undefined ? patch.error : scanCache?.error ?? null,
+    };
+  };
+  const setPhase = (v: Phase) => { setPhaseState(v); writeCache({ phase: v }); };
+  const setPreview = (v: string | null) => { setPreviewState(v); writeCache({ preview: v }); };
+  const setPhotoFile = (v: File | null) => { setPhotoFileState(v); writeCache({ photoFile: v }); };
+  const setResults = (v: PlantNetResult[]) => { setResultsState(v); writeCache({ results: v }); };
+  const setError = (v: string | null) => { setErrorState(v); writeCache({ error: v }); };
 
   const onPhoto = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -92,6 +123,8 @@ export function ScanScreen() {
       };
 
       await db.plants.put(plant);
+      // Plant toegevoegd — cache opruimen zodat volgende scan vers begint
+      scanCache = null;
       navigate(`/plant/${plant.id}`, { replace: true });
     } catch {
       setSaving(null);
@@ -106,6 +139,7 @@ export function ScanScreen() {
     setResults([]);
     setError(null);
     setSaving(null);
+    scanCache = null;
     if (fileRef.current) fileRef.current.value = '';
   };
 
