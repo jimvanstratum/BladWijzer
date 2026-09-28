@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useLiveQuery } from 'dexie-react-hooks';
 import { Link } from 'react-router-dom';
 import { Plus, Search, Leaf, ArrowUpDown } from 'lucide-react';
@@ -28,6 +28,20 @@ const SORTS: Array<{ id: SortMode; label: string }> = [
   { id: 'az', label: 'A-Z' },
 ];
 
+const SORT_KEY = 'bladwijzer-home-sort';
+
+function loadSort(): SortMode {
+  const saved = localStorage.getItem(SORT_KEY);
+  return SORTS.some((s) => s.id === saved) ? (saved as SortMode) : 'added';
+}
+
+// Survives HomeScreen unmounts (e.g. opening a plant detail) within the session.
+const homeState: { filter: 'alle' | Location; sort: SortMode; query: string } = {
+  filter: 'alle',
+  sort: loadSort(),
+  query: '',
+};
+
 function pruneDistance(plant: MyPlant): number {
   const entry = getCatalogEntry(plant.catalogId);
   if (!entry || entry.pruneMonths.length === 0) return 13;
@@ -49,10 +63,17 @@ function sortPlants(plants: MyPlant[], mode: SortMode): MyPlant[] {
 
 export function HomeScreen() {
   const plants = useLiveQuery(() => db.plants.toArray(), []);
-  const [filter, setFilter] = useState<'alle' | Location>('alle');
-  const [sort, setSort] = useState<SortMode>('added');
-  const [query, setQuery] = useState('');
+  const [filter, setFilter] = useState<'alle' | Location>(() => homeState.filter);
+  const [sort, setSort] = useState<SortMode>(() => homeState.sort);
+  const [query, setQuery] = useState(() => homeState.query);
   const isDark = useIsDark();
+
+  useEffect(() => {
+    homeState.filter = filter;
+    homeState.sort = sort;
+    homeState.query = query;
+    localStorage.setItem(SORT_KEY, sort);
+  }, [filter, sort, query]);
 
   const filtered = useMemo(() => {
     if (!plants) return [];
