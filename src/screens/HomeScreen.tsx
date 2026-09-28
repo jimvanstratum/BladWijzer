@@ -1,14 +1,15 @@
 import { useMemo, useState } from 'react';
 import { useLiveQuery } from 'dexie-react-hooks';
 import { Link } from 'react-router-dom';
-import { Plus, Search, Leaf } from 'lucide-react';
+import { Plus, Search, Leaf, ArrowUpDown } from 'lucide-react';
 import { db } from '@/data/db';
+import { getCatalogEntry } from '@/data/catalog';
 import { PlantCard } from '@/components/PlantCard';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { useIsDark } from '@/hooks/useIsDark';
-import type { Location } from '@/types/plant';
-import { cn } from '@/lib/utils';
+import type { Location, MyPlant } from '@/types/plant';
+import { cn, currentMonth } from '@/lib/utils';
 
 const WORDLOGO = `${import.meta.env.BASE_URL}wordlogo.svg`;
 const WORDLOGO_DARK = `${import.meta.env.BASE_URL}wordlogo-dark.svg`;
@@ -19,16 +20,44 @@ const FILTERS: Array<{ id: 'alle' | Location; label: string }> = [
   { id: 'buiten', label: 'Buiten' },
 ];
 
+type SortMode = 'added' | 'prune' | 'az';
+
+const SORTS: Array<{ id: SortMode; label: string }> = [
+  { id: 'added', label: 'Toegevoegd' },
+  { id: 'prune', label: 'Snoeivolgorde' },
+  { id: 'az', label: 'A-Z' },
+];
+
+function pruneDistance(plant: MyPlant): number {
+  const entry = getCatalogEntry(plant.catalogId);
+  if (!entry || entry.pruneMonths.length === 0) return 13;
+  const month = currentMonth();
+  if (entry.pruneMonths.includes(month)) return 0;
+  return Math.min(...entry.pruneMonths.map((m) => ((m - month + 12) % 12) || 12));
+}
+
+function sortPlants(plants: MyPlant[], mode: SortMode): MyPlant[] {
+  switch (mode) {
+    case 'added':
+      return [...plants].sort((a, b) => b.addedAt.localeCompare(a.addedAt));
+    case 'prune':
+      return [...plants].sort((a, b) => pruneDistance(a) - pruneDistance(b) || a.commonName.localeCompare(b.commonName, 'nl'));
+    case 'az':
+      return [...plants].sort((a, b) => a.commonName.localeCompare(b.commonName, 'nl'));
+  }
+}
+
 export function HomeScreen() {
-  const plants = useLiveQuery(() => db.plants.orderBy('addedAt').reverse().toArray(), []);
+  const plants = useLiveQuery(() => db.plants.toArray(), []);
   const [filter, setFilter] = useState<'alle' | Location>('alle');
+  const [sort, setSort] = useState<SortMode>('added');
   const [query, setQuery] = useState('');
   const isDark = useIsDark();
 
   const filtered = useMemo(() => {
     if (!plants) return [];
     const q = query.trim().toLowerCase();
-    return plants
+    const matched = plants
       .filter((p) => filter === 'alle' || p.location === filter)
       .filter((p) =>
         !q
@@ -39,7 +68,8 @@ export function HomeScreen() {
               .toLowerCase()
               .includes(q),
       );
-  }, [plants, filter, query]);
+    return sortPlants(matched, sort);
+  }, [plants, filter, query, sort]);
 
   return (
     <div className="flex flex-col gap-4 pb-4">
@@ -97,6 +127,23 @@ export function HomeScreen() {
           >
             <Plus size={16} />
           </Link>
+        </div>
+        <div className="flex items-center gap-1.5">
+          <ArrowUpDown size={14} className="shrink-0 text-muted-foreground" />
+          {SORTS.map(({ id, label }) => (
+            <button
+              key={id}
+              onClick={() => setSort(id)}
+              className={cn(
+                'rounded-full px-2.5 py-1 text-xs font-medium transition-colors',
+                sort === id
+                  ? 'bg-primary/15 text-primary'
+                  : 'text-muted-foreground hover:text-fg',
+              )}
+            >
+              {label}
+            </button>
+          ))}
         </div>
       </div>
 
