@@ -4,6 +4,7 @@ import { AppHeader } from '@/components/AppHeader';
 import { Button } from '@/components/ui/Button';
 import { Card, CardContent } from '@/components/ui/Card';
 import { daysSinceLastBackup, exportBackup, importBackup, shareBackup } from '@/lib/export';
+import { CATALOG } from '@/data/catalog';
 import { cn } from '@/lib/utils';
 
 type Theme = 'system' | 'light' | 'dark';
@@ -232,14 +233,15 @@ export function SettingsScreen() {
               BladWijzer — persoonlijke plantenapp. Data staat lokaal op dit toestel. Afbeeldingen
               worden getoond via Wikimedia Commons.
             </p>
-            <p className="text-xs text-muted-foreground">Versie 0.9.0 · 322 planten</p>
+            <p className="text-xs text-muted-foreground">Versie 0.9.0 · {CATALOG.length} planten</p>
             <button
-              onClick={() => {
-                if (confirm('Alle caches wissen en herladen? Je plantendata blijft behouden.')) {
-                  caches.keys().then(names => Promise.all(names.map(n => caches.delete(n)))).then(() => {
-                    window.location.reload();
-                  });
-                }
+              onClick={async () => {
+                if (!confirm('Alle caches wissen en herladen? Je plantendata blijft behouden.')) return;
+                const names = await caches.keys();
+                await Promise.all(names.map(n => caches.delete(n)));
+                const regs = await navigator.serviceWorker.getRegistrations();
+                await Promise.all(regs.map(r => r.unregister()));
+                window.location.reload();
               }}
               className="mt-2 text-xs text-primary underline"
             >
