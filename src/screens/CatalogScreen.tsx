@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Search, Leaf } from 'lucide-react';
 import { AppHeader } from '@/components/AppHeader';
@@ -17,9 +17,20 @@ const CATEGORIES: Array<{ id: 'alle' | Category; label: string }> = [
   { id: 'fruit', label: 'Fruit' },
 ];
 
+// Survives CatalogScreen unmounts (e.g. opening a catalog detail) within the session.
+const catalogState: { query: string; category: 'alle' | Category } = {
+  query: '',
+  category: 'alle',
+};
+
 export function CatalogScreen() {
-  const [query, setQuery] = useState('');
-  const [category, setCategory] = useState<'alle' | Category>('alle');
+  const [query, setQuery] = useState(() => catalogState.query);
+  const [category, setCategory] = useState<'alle' | Category>(() => catalogState.category);
+
+  useEffect(() => {
+    catalogState.query = query;
+    catalogState.category = category;
+  }, [query, category]);
 
   const results = useMemo(() => {
     const base = query.trim() ? searchCatalog(query, 500) : CATALOG;
