@@ -82,6 +82,15 @@
     padding-top: env(safe-area-inset-top, 0px);
   }
 
+  /* Menubalk: laatste flex-kind van .app-shell, dus altijd op --app-height (onderkant scherm). */
+  .bottom-nav {
+    padding-bottom: max(var(--sab, 0px), env(safe-area-inset-bottom, 0px));
+  }
+  /* Geïnstalleerde app: minimaal wat ruimte boven de thuisbalk, ook als iOS geen onderrand meldt. */
+  html.standalone .bottom-nav {
+    padding-bottom: max(var(--sab, 0px), env(safe-area-inset-bottom, 0px), 14px);
+  }
+
   body {
     @apply bg-bg text-fg font-sans antialiased;
     font-feature-settings: 'cv11', 'ss01';
